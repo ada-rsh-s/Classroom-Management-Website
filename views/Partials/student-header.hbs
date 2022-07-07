@@ -1,0 +1,125 @@
+<head>
+
+	<!-- META ============================================= -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+	<meta name="robots" content="" />
+
+	<meta name="description" content="EduChamp : Education HTML Template" />
+
+	<meta property="og:title" content="EduChamp : Education HTML Template" />
+	<meta property="og:description" content="EduChamp : Education HTML Template" />
+	<meta property="og:image" content="" />
+	<meta name="format-detection" content="telephone=no">
+
+
+
+	<title>E - CLASSROOM</title>
+	<link rel="icon" href="../Studtemplate/assets/images/logo.png">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<link rel="stylesheet" type="text/css" href="../Studtemplate/assets/css/assets.css">
+
+	<link rel="stylesheet" type="text/css" href="../Studtemplate/assets/css/typography.css">
+
+	<link rel="stylesheet" type="text/css" href="../Studtemplate/assets/css/shortcodes/shortcodes.css">
+
+	<link rel="stylesheet" type="text/css" href="../Studtemplate/assets/css/style.css">
+	<link class="skin" rel="stylesheet" type="text/css" href="../Studtemplate/assets/css/color/color-4.css">
+
+</head>
+<header class="header rs-nav header-transparent">
+
+	<div class="sticky-header  navbar-expand-lg">
+		<div class="menu-bar clearfix">
+			<div class="container col-md-12  clearfix">
+				<div class="menu-logo">
+					<a href="/student"><img style="margin-left: 15px; margin-top: 10px;"
+							src="../Studtemplate/assets/images/logo.png" alt=""></a>
+				</div>
+				<button class="navbar-toggler collapsed menuicon justify-content-end" type="button"
+					data-toggle="collapse" data-target="#menuDropdown" aria-controls="menuDropdown"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+				<div class="menu-links navbar-collapse collapse justify-content-start" id="menuDropdown">
+					<div class="menu-logo">
+						<a href="/student"><img style="width: AUTO;" src="../Studtemplate/assets/images/logo.png"
+								alt=""></a>
+					</div>
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="/student">Home</a>
+						</li>
+						<li><a href="/today">Today's Task</a>
+						</li>
+						<li class="add-mega-menu"><a href="/attendance">Attendance</a>
+						</li>
+						<li><a href="/assignments">Assignments</a>
+						</li>
+						<li class="nav-dashboard"><a href="/announcement">Announcement</a>
+						</li>
+						<li class="nav-dashboard"><a href="/events">Events</a>
+						</li>
+						<li class="nav-dashboard"><a href="/notes">Notes</a>
+						</li>
+						<li class="nav-dashboard"><a href="/gallery">Gallery</a>
+						</li>
+						<li class="nav-dashboard"><a href="/chat">Chat</a>
+						</li>
+						<li class="nav-dashboard"><a href="/profile">Profile</a>
+						</li>
+						<li class=""><a style="padding-left:0px;" href="javascript:;"><img onmouseover="notihide()"
+									id="bell" style="height: 25px; width: auto;"
+									src="../Template/icons/themify-icons/SVG/bell.svg" alt="" srcset=""><span
+									id="notify"
+									style="display: none; position: absolute; padding: 5px 5px;border-radius: 50%; background-color: red; margin-left: 17px; margin-top: -25px;"></span>
+							</a>
+
+							<ul style="width: 250px; height: 200px; overflow: auto;margin-left:-100px;" class="sub-menu">
+								<li id="display" style="display: none;"><a id="date" style="color: #fc1864;"> -
+									</a><span
+										style="margin-top: -30px; font-size: 14px; margin-right: 30px; text-transform: none; color: #fc1864; float: right;"
+										id="type"></span><br><a id="topic" style="margin-top: -35px;"></a></li>
+
+								{{#each notifications}}
+
+								<li><a style="color: #fc1864;">{{this.Date}} - {{this.type}}</a><br><a
+										style="margin-top: -35px;">{{this.topic}}</a></li>
+								{{/each}}
+							</ul>
+						<li style=" margin-right: -75px;" class="nav-dashboard"><a href="/studentout"><button
+									style="margin-top: -10px;" class="btn btn-warning">Logout</button></a>
+						</li>
+				</div>
+				<!-- Navigation Menu END ==== -->
+			</div>
+		</div>
+	</div>
+</header>
+<audio hidden controls id="sound">
+	<source src="../Notification/notification.mp3" type="audio/mp3">
+</audio>
+<script src="../socket.io/socket.io.js"></script>
+
+<script>
+	function notihide() {
+		document.getElementById("notify").style.display = "none"
+	}
+	var socket = io()
+	socket.on("topicassign", function (topic, type, date) {
+		document.getElementById("sound").autoplay = true;
+		document.getElementById("notify").style.display = "block"
+		document.getElementById("display").style.display = "block"
+		document.getElementById("date").innerHTML = date
+		document.getElementById("type").innerHTML = type
+		document.getElementById("topic").innerHTML = topic
+	})
+</script>
+<script src="../Studtemplate/assets/js/jquery.min.js"></script>
+<script src="../Studtemplate/assets/js/functions.js"></script>

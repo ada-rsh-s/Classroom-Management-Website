@@ -1,0 +1,202 @@
+<head>
+
+	<meta charset="utf-8" />
+	<meta name="description" content="Headers datatables examples" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+	<link href="../Studtable/style.bundled1cf.css" rel="stylesheet" type="text/css" />
+	<link href="../Studtable/style.bundled1cf.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="../Studtemplate/assets/css/style.css">
+	<link rel="stylesheet" href="../Template/css/vendors_css.css">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-datetimepicker/2.7.1/css/bootstrap-material-datetimepicker.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body id="bg">
+
+	<div class="page-wraper">
+		<div class="page-content ">
+			<div class="page-banner ovbl-dark"
+				style="background-image:url(../Studtemplate/assets/images/banner/banner3.jpg);">
+				<div class="container">
+					<div class="page-banner-entry">
+						<h1 class="text-white">ATTENDANCE</h1>
+					</div>
+				</div>
+			</div>
+			<div style="margin-top: 100px;" class="d-flex flex-column flex-root">
+				<div class="d-flex flex-row flex-column-fluid page">
+
+					<div class="d-flex flex-column flex-row-fluid" id="kt_wrapper">
+						<center>
+							<h1 style=" font-family: 'Times New Roman', Times, serif; font-size: 30px;">ATTENDANCE</h1>
+						</center>
+						<center>
+							<h4>{{datecheck}}</h4>
+						</center>
+
+						<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
+							<div class="d-flex flex-column-fluid">
+								<!--begin::Container-->
+
+								<div class="container">
+
+									<center>
+										<form action="/attendmonth" method="POST">
+											<p class="help-block"><strong>MONTH PICKER</strong> </p>
+
+											<div class='row'>
+
+												<div class='input-field col s6'>
+													<input name="Date" placeholder="MM-YYYY" size="20" type="text"
+														id="datepicker" readonly required />
+													<style>
+														::-webkit-input-placeholder {
+															text-align: center;
+														}
+
+														:-moz-placeholder {
+															/* Firefox 18- */
+															text-align: center;
+														}
+
+														::-moz-placeholder {
+															/* Firefox 19+ */
+															text-align: center;
+														}
+
+														:-ms-input-placeholder {
+															text-align: center;
+														}
+
+														input {
+															line-height: 30px;
+														}
+													</style>
+												</div>
+											</div>
+											<p class="help-block"><strong>Date format:</strong> mm-yyyy</p>
+
+											<button style="margin-bottom: 20px;" class="btn btn-success"
+												type="submit">Submit</button>
+										</form>
+
+									</center>
+									<div class="card card-custom">
+										<div class="card-body">
+											<!--begin: Datatable-->
+											<table style=" margin-bottom: 50px;"
+												class="table table-bordered table-hover table-checkable "
+												id="kt_datatable">
+												<thead>
+
+													<tr>
+
+														<th>
+															<center>Date</center>
+														</th>
+														<th>
+															<center>Attendance</center>
+														</th>
+													</tr>
+												</thead>
+												<tbody>
+													{{#each attendance}}
+													<tr>
+														<td>
+															<center>{{this.attendate}}</center>
+														</td>
+														<td>
+															<center>{{this.status}}</center>
+														</td>
+														<td hidden nowrap="nowrap"></td>
+													</tr>
+													{{/each}}
+												</tbody>
+											</table>
+											<hr>
+											<center><u>
+													<h3>MONTHLY REPORT</h3>
+												</u></center>
+											<center>
+												<div class="mt-5 card card-custom help-block">
+													<p style="font-size: 20px;">Total Days : {{totalDays}}</p>
+												</div>
+											</center>
+											<center>
+												<div class="mt-5 card card-custom help-block">
+													<p style="font-size: 20px;">No of days present : {{days}}</p>
+												</div>
+											</center>
+											<center>
+												<div class="mt-5 card card-custom help-block">
+													<p style="font-size: 20px;">No of days Absent : {{totalabs}}</p>
+												</div>
+											</center>
+											<center>
+												<div class="mt-5 card card-custom help-block">
+													<p style="font-size: 20px;">Percentage : {{percentage}} %</p>
+												</div>
+											</center>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../Template/js/vendors.min.js"></script>
+<script src="../Template/corenav-master/coreNavigation-1.1.3.js"></script>
+<script src="../Template/vendor_components/jquery-ui/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-datetimepicker/2.7.1/js/bootstrap-material-datetimepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<script>
+	$(document).ready(function () {
+		$("#datepicker").bootstrapMaterialDatePicker({
+			format: "MM-YYYY",
+			lang: "br",
+			time: false
+			//maxDate: moment()
+		});
+	});
+
+</script>
+<style>
+	div .dtp-picker,
+	div .dtp-actual-num,
+	div .dtp-actual-day {
+		display: none
+	}
+
+	.dtp>.dtp-content>.dtp-date-view>header.dtp-header {
+		height: 40px;
+		background-color: #0080d0;
+	}
+
+	.dtp .p10>a {
+		color: #0080d0;
+	}
+
+	.dtp div.dtp-actual-year {
+		color: #BAE3FF
+	}
+
+	.dtp div.dtp-date,
+	.dtp div.dtp-time {
+		background-color: #03a9f4
+	}
+
+	.dtp div.dtp-actual-month {
+		margin-bottom: 10px;
+	}
+</style>

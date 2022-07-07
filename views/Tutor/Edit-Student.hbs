@@ -1,0 +1,198 @@
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Vendors Style-->
+	<link href="../Studtable/style.bundled1cf.css" rel="stylesheet" type="text/css" />
+
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="/Template/css/vendors_css.css">
+
+	<!-- Style-->
+	<link rel="stylesheet" href="/Template/css/style.css">
+
+</head>
+
+<body onload="gender('{{stud.Gender}}')" class="theme-primary">
+
+	<section style="margin-top: -500px;" class="py-50">
+		<div class="container">
+			<center>
+				<h1 style="font-family: 'Times New Roman', Times, serif;">EDIT STUDENT</h1>
+			</center>
+
+			<div class="row">
+
+				<div class="col-lg-12 col-md-8 mt-3 col-12">
+					<div class="box">
+						<div class="box-body">
+							<div class="tab-content" id="pills-tabContent23">
+								<div class="tab-pane fade show active" id="pills-edit" role="tabpanel"
+									aria-labelledby="pills-edit-tab">
+									<div class="row">
+										<div class="col-12">
+											<form class="form" method="POST" enctype="multipart/form-data"
+												action="/tutor/editstud/{{stud._id}}">
+												<div>
+													<h4 class="box-title text-primary"><i class="ti-user mr-15"></i>EDIT
+														STUDENT</h4>
+													<hr class="my-15">
+													<div class="row">
+														<div class="col-md-12">
+
+															<div class="form-group">
+																<label>Name</label>
+																<input type="text" name="Name" class="form-control"
+																	placeholder="Name of the student"
+																	value="{{stud.Name}}">
+															</div>
+														</div>
+
+													</div>
+													<div class="row">
+														<div class="col-md-12">
+
+															<div class="form-group">
+																<div class="form-check form-check-inline">
+																	<b>GENDER</b>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
+																	<input class="form-check-input" type="radio"
+																		name="Gender" id="inlineRadio1" value="Male">
+																	<label class="form-check-label"
+																		for="inlineRadio1">Male</label>
+																</div>
+																<div class="form-check form-check-inline">
+																	<input class="form-check-input" type="radio"
+																		name="Gender" id="inlineRadio2" value="Female">
+																	<label class="form-check-label"
+																		for="inlineRadio2">Female</label>
+																</div>
+															</div>
+														</div>
+
+													</div>
+
+												</div>
+												<div class="row">
+													<div class="col-md-12">
+
+														<div class="form-group">
+															<label>Roll No</label>
+															<input type="text" name="Rollno" class="form-control"
+																placeholder="Topic" value="{{stud.Rollno}}">
+														</div>
+													</div>
+
+												</div>
+												<div class="row">
+													<div class="col-md-12">
+
+														<div class="form-group">
+															<label>Phone No.</label>
+															<input type="number" name="Phone" class="form-control"
+																placeholder="Topic" value="{{stud.Phone}}">
+														</div>
+													</div>
+
+												</div>
+
+												<div class="row">
+													<div class="col-md-12">
+
+														<div class="form-group">
+															<label>Email</label>
+															<input type="email" name="Email" class="form-control"
+																placeholder="Email" value="{{stud.Email}}">
+														</div>
+													</div>
+
+												</div>
+												<div class="row">
+													<div class="col-md-12">
+
+														<div class="form-group">
+															<label>Address</label>
+															<input type="text" name="Address" class="form-control"
+																placeholder="Address" value="{{stud.Address}}">
+														</div>
+													</div>
+
+												</div>
+												<hr>
+												<h4 class="box-title text-primary"><i class="ti-user mr-15"></i>Account
+													Details </h4>
+												<hr>
+												<div class="row">
+													<div class="mt-4 col-md-12">
+
+														<div class="form-group">
+															<label>Username</label>
+															<input type="text" name="Username" class="form-control"
+																placeholder="Username" value="{{stud.Username}}">
+														</div>
+													</div>
+
+												</div>
+
+												<div class="row">
+													<div class="col-md-12">
+														<div class="form-group">
+															<label>Photo</label>
+															<br><img id="imgView" style="width: 100px; height: 100px;"
+																src="/student-images/{{stud._id}}.jpg" alt="" srcset="">
+															<input name="Image" type="file" class="form-controlg"
+																onchange="viewImage(event)">
+														</div>
+													</div>
+
+												</div>
+
+
+
+												<button style="float: right;" type="submit" class="btn btn-success">
+													Save Changes <img style="margin-bottom: 2px;"
+														src="../Template/icons/themify-icons/SVG/upload.svg" alt=""
+														srcset="">
+
+												</button>
+										</div>
+										</form>
+									</div>
+								</div>
+							</div>
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</section>
+
+	<script src="/Template/js/vendors.min.js"></script>
+	<!-- Corenav Master JavaScript -->
+	<script src="/Template/corenav-master/coreNavigation-1.1.3.js"></script>
+	<script src="/Template/vendor_components/jquery-ui/jquery-ui.min.js"></script>
+
+	<!-- EduAdmin front end -->
+
+
+	<script>
+		function gender(data) {
+			if (data == "Male") {
+				document.getElementById('inlineRadio1').checked = true
+			} else if (data == "Female") {
+				document.getElementById('inlineRadio2').checked = true
+
+			}
+		}
+
+		function viewImage(event) {
+			document.getElementById('imgView').src = URL.createObjectURL(event.target.files[0])
+		}
+	</script>
+</body>

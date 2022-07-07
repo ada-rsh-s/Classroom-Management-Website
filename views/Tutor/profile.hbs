@@ -1,0 +1,279 @@
+<!-- Mirrored from www.multipurposethemes.com/admin/eduadmin-template/front-end/mydashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Nov 2020 08:29:37 GMT -->
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="icon" href="https://www.multipurposethemes.com/admin/eduadmin-template/images/favicon.ico">
+
+
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="../Template/css/vendors_css.css">
+
+	<!-- Style-->
+	<link rel="stylesheet" href="../Template/css/style.css">
+
+</head>
+
+<body class="theme-primary">
+
+	<!-- The social media icon bar -->
+
+
+
+	<!---page Title --->
+
+	<!--Page content -->
+
+	<section style="margin-top: -500px;" class="py-50">
+		<div class="container">
+			<div class="row">
+				<div style="margin-top: 12px;" class="col-lg-3 col-md-4 col-12">
+
+					<div class="position-sticky t-100">
+						<div class="box box-widget widget-user-2">
+							<div class="widget-user-header bg-secondary-light">
+								<div class="widget-user-image">
+									<img class="rounded-circle bg-danger" src="../Tutor-image/{{teacher._id}}.jpg"
+										alt="Profile Photo">
+								</div>
+								<h3 class="widget-user-username">{{teacher.Firstname}} {{teacher.Lastname}}</h3>
+								<h6 class="widget-user-desc">TUTOR </h6>
+							</div>
+							<div class="box-footer no-padding">
+								<ul class="nav d-block nav-stacked font-size-16" id="pills-tab23" role="tablist">
+									<li class="nav-item bb-1">
+										<a class="py-10 nav-link active" id="pills-edit-tab" data-toggle="pill"
+											href="#profile-view" role="tab" aria-controls="pills-edit"
+											aria-selected="true">
+											<span class="mr-10 icon-Edit"><span class="path1"></span><span
+													class="path2"></span></span>Profile
+										</a>
+									</li>
+									<li class="nav-item bb-1">
+										<a class="py-10 nav-link" id="pills-courses-tab" data-toggle="pill"
+											href="#profile-edit" role="tab" aria-controls="pills-courses"
+											aria-selected="true">
+											<span class="mr-10 icon-Book-open"><span class="path1"></span><span
+													class="path2"></span></span>Edit Profile
+										</a>
+									</li>
+
+
+
+								</ul>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-9 col-md-8 mt-3 col-12">
+					<div class="box">
+						<div class="box-body">
+							<div class="tab-content" id="pills-tabContent23">
+								<div class="tab-pane fade show active" id="profile-view" role="tabpanel"
+									aria-labelledby="pills-edit-tab">
+									<div class="row">
+										<div class="col-12">
+											<form class="form">
+												<div>
+													<h4 class="box-title text-primary"><i
+															class="ti-user mr-15"></i>Profile</h4>
+													<hr class="my-15">
+													<div class="row">
+														<div class="col-md-6">
+
+															<div class="form-group">
+																<label>First Name</label>
+																<input type="text" class="form-control"
+																	placeholder="First Name"
+																	value="{{teacher.Firstname}}" disabled>
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="form-group">
+																<label>Last Name</label>
+																<input type="text" class="form-control"
+																	placeholder="Last Name" disabled
+																	value="{{teacher.Lastname}}">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label>Job</label>
+																<input type="text" class="form-control"
+																	placeholder="Company Name" disabled
+																	value="{{teacher.Job}}">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="form-group">
+																<label>Contact Number</label>
+																<input type="tel" class="form-control"
+																	placeholder="Phone" disabled
+																	value="{{teacher.Phone}}">
+															</div>
+														</div>
+													</div>
+													<div class="form-group">
+														<label>Email</label>
+														<input class="form-control" type="email" placeholder="email"
+															disabled value="{{teacher.Email}}">
+													</div>
+													<div class="form-group">
+														<label>Pin</label>
+														<input class="form-control" type="number" placeholder="Pin"
+															disabled value="{{teacher.Pin}}">
+													</div>
+													<div class="form-group">
+														<label>Address</label>
+														<input class="form-control" type="text" placeholder="Address"
+															disabled value="{{teacher.Address}}">
+													</div>
+
+
+													<hr class="my-15">
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="tab-pane fade" id="profile-edit" role="tabpanel"
+									aria-labelledby="pills-courses-tab">
+									<hr>
+									<div class="tab-pane fade show active" id="profile-edit" role="tabpanel"
+										aria-labelledby="pills-edit-tab">
+										<div class="row">
+											<div class="col-12">
+												<form class="form" action="/tutor/editutor/{{teacher._id}}"
+													method="POST" enctype="multipart/form-data">
+													<div>
+														<h4 class="box-title text-primary"><i
+																class="ti-user mr-15"></i>Edit Profile</h4>
+														<hr class="my-15">
+														<div class="row">
+															<div class="col-md-6">
+
+																<div class="form-group">
+																	<label>First Name</label>
+																	<input type="text" name="Firstname"
+																		value="{{teacher.Firstname}}"
+																		class="form-control" placeholder="First Name">
+																</div>
+															</div>
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label>Last Name</label>
+																	<input type="text" class="form-control"
+																		name="Lastname" placeholder="Last Name"
+																		value="{{teacher.Lastname}}">
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label>Job</label>
+																	<input type="text" class="form-control" name="Job"
+																		placeholder="Job" value="{{teacher.Job}}">
+																</div>
+															</div>
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label>Contact Number</label>
+																	<input name="Phone" type="tel" class="form-control"
+																		placeholder="Phone" value="{{teacher.Phone}}">
+																</div>
+															</div>
+														</div>
+														<div class="form-group">
+															<label>Email</label>
+															<input name="Email" class="form-control" type="email"
+																placeholder="email" value="{{teacher.Email}}">
+														</div>
+														<div class="form-group">
+															<label>Pin</label>
+															<input name="Pin" class="form-control" type="number"
+																placeholder="Pin" value="{{teacher.Pin}}">
+														</div>
+														<div class="form-group">
+															<label>Address</label>
+															<input name="Address" class="form-control" type="text"
+																placeholder="Address"
+																value="{{teacher.Address}}"></input>
+														</div>
+														<div class="row">
+															<div class="col-md-12">
+																<div class="form-group">
+																	<label>Profile Picture</label> <br>
+																	<img id="imgView"
+																		style="height: 100px; margin-bottom: 10px; width: 75px;"
+																		src="../Tutor-image/{{teacher._id}}.jpg" alt=""
+																		srcset="">
+																	<input name="Tutimage" type="file"
+																		class="form-control"
+																		onchange="viewImage(event)">
+																</div>
+															</div>
+
+														</div>
+
+														<hr class="my-15">
+													</div>
+													<div class="d-flex justify-content-end gap-items-2">
+														<button type="submit" class="btn btn-success">
+															<i class="ti-save-alt"></i> Save changes
+														</button>
+
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- BEGIN MODAL -->
+	<!-- Modal Add Category -->
+
+	<!-- END MODAL -->
+
+	<style>
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+	</style>
+
+
+	<script>
+		function viewImage(event) {
+			document.getElementById('imgView').src = URL.createObjectURL(event.target.files[0])
+		}
+	</script>
+
+	<!-- Vendor JS -->
+	<script src="../Template/js/vendors.min.js"></script>
+	<!-- Corenav Master JavaScript -->
+	<script src="../Template/corenav-master/coreNavigation-1.1.3.js"></script>
+	<script src="../Template//vendor_components/jquery-ui/jquery-ui.min.js"></script>
+
+	<!-- EduAdmin front end -->
+
+
+
+</body>

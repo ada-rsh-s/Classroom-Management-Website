@@ -1,0 +1,272 @@
+<!-- Mirrored from www.multipurposethemes.com/admin/eduadmin-template/front-end/mydashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Nov 2020 08:29:37 GMT -->
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Vendors Style-->
+	<link href="../Studtable/style.bundled1cf.css" rel="stylesheet" type="text/css" />
+
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="../Template/css/vendors_css.css">
+
+	<!-- Style-->
+	<link rel="stylesheet" href="../Template/css/style.css">
+
+</head>
+
+<body class="theme-primary">
+
+
+	<section style="margin-top: -500px;" class="py-50">
+		<div class="container">
+			<center>
+				<h1 style="font-family: 'Times New Roman', Times, serif;">ADD STUDENT</h1>
+			</center>
+
+			<div class="row">
+
+				<div class="col-lg-12 col-md-8 mt-3 col-12">
+					<div class="box">
+						<div class="box-body">
+							<div class="tab-content" id="pills-tabContent23">
+								<div class="tab-pane fade show active" id="pills-edit" role="tabpanel"
+									aria-labelledby="pills-edit-tab">
+									<div class="row">
+										<div class="col-12">
+											<form id="student-form" class="form" method="POST"
+												action="/tutor/addstudent" enctype="multipart/form-data">
+												<div>
+													<h4 class="box-title text-primary"><i class="ti-user mr-15"></i>ADD
+														STUDENT</h4>
+													<hr class="my-15">
+													<div class="row">
+														<div class="col-md-12">
+
+
+															{{#if rollstatus}}
+															<p style="color: red; font-family: Arial, Helvetica, sans-serif; font-size: 17px; font-weight: bolder;"
+																class="text-center error">WARNING : Added Student is not
+																recorded since The Roll Number is already registered in
+																an account!!!</p>
+															{{/if}}
+															<div class="form-group">
+																<label>Name</label>
+																<input type="text" name="Name" class="form-control"
+																	placeholder="Name of the student">
+															</div>
+														</div>
+
+													</div>
+													<div class="row">
+														<div class="col-md-12">
+
+															<div class="form-group">
+																<div class="form-check form-check-inline">
+																	<b>GENDER</b>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
+																	<input class="form-check-input" type="radio"
+																		name="Gender" id="inlineRadio1" value="Male">
+																	<label class="form-check-label"
+																		for="inlineRadio1">Male</label>
+																</div>
+																<div class="form-check form-check-inline">
+																	<input class="form-check-input" type="radio"
+																		name="Gender" id="inlineRadio2" value="Female">
+																	<label class="form-check-label"
+																		for="inlineRadio2">Female</label>
+																</div>
+															</div>
+														</div>
+
+													</div>
+													<div class="row">
+														<div class="col-md-12">
+
+															<div class="form-group">
+																<label>Roll No</label>
+																<input type="number" name="Rollno" class="form-control"
+																	placeholder="Roll No">
+															</div>
+														</div>
+
+													</div>
+													<div class="row">
+														<div class="col-md-12">
+
+															<div class="form-group">
+																<label>Phone No.</label>
+																<input type="number" name="Phone" class="form-control"
+																	placeholder="Phone No">
+															</div>
+														</div>
+
+													</div>
+
+													<div class="row">
+														<div class="col-md-12">
+
+															<div class="form-group">
+																<label>Email</label>
+																<input type="email" name="Email" class="form-control"
+																	placeholder="Email">
+															</div>
+														</div>
+
+													</div>
+													<div class="row">
+														<div class="col-md-12">
+
+															<div class="form-group">
+																<label>Address</label>
+																<textarea type="text" name="Address"
+																	class="mb form-control"
+																	placeholder="Address"></textarea>
+															</div>
+														</div>
+
+													</div>
+													<hr>
+													<h4 class="box-title text-primary"><i
+															class="ti-user mr-15"></i>Account Details </h4>
+													<hr>
+													<div class="row">
+														<div class="mt-4 col-md-12">
+
+															<div class="form-group">
+																<label>Username</label>
+																<input type="text" name="Username" class="form-control"
+																	placeholder="Username">
+															</div>
+														</div>
+
+													</div>
+													<div class="row">
+														<div class="col-md-12">
+															<div class="form-group">
+																<label>Password</label>
+																<input type="password" name="Password"
+																	class="form-control" placeholder="Password">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-12">
+															<div class="form-group">
+																<label>Photo</label>
+																<input name="Image" type="file" class="form-control"
+																	placeholder="Address">
+															</div>
+														</div>
+													</div>
+
+
+
+													<button style="float: right;" type="submit" class="btn btn-success">
+														Upload <img style="margin-bottom: 2px;"
+															src="../Template/icons/themify-icons/SVG/upload.svg" alt=""
+															srcset="">
+
+													</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+
+
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- BEGIN MODAL -->
+	<!-- Modal Add Category -->
+
+	<!-- END MODAL -->
+
+
+
+
+
+
+	<!-- Vendor JS -->
+	<script src="../Template/js/vendors.min.js"></script>
+	<!-- Corenav Master JavaScript -->
+	<script src="../Template/corenav-master/coreNavigation-1.1.3.js"></script>
+	<script src="../Template//vendor_components/jquery-ui/jquery-ui.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js"></script>
+
+	<script>        $("#student-form").validate({
+			rules:
+			{
+				Name:
+				{
+					required: true,
+					minlength: 3,
+					maxlength: 35
+
+				},
+				Rollno:
+				{
+					required: true,
+					minlength: 1,
+					maxlength: 10
+				},
+				Phone:
+				{
+					required: true,
+					number: true,
+					minlength: 10,
+					maxlength: 12
+				},
+				Email:
+				{
+					required: true,
+					email: true,
+				},
+				Address:
+				{
+					required: true,
+					minlength: 5,
+					maxlength: 200
+				},
+				Image:
+				{
+					required: true
+				}
+			},
+
+			messages: {
+				Name:
+				{
+					minlength: "Please enter your name"
+				},
+				Address:
+				{
+					minlength: "Please enter a valid Address"
+				},
+				Rollno:
+				{
+					maxlength: "Please enter a valid <b>Roll No</b>"
+				},
+				Phone:
+				{
+					minlength: "Please enter a valid number",
+					maxlength: "Please enter a valid number"
+				},
+				Image:
+				{
+					required: "Please upload the photo of student"
+				}
+
+			}
+
+		})</script>
+</body>

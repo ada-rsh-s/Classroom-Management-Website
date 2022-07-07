@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="WebUni Education Template">
+	<meta name="keywords" content="webuni, education, creative, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Favicon -->
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i,800,800i"
+		rel="stylesheet">
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="/announcedetails/font-awesome.min.css" />
+	<link rel="stylesheet" href="/announcedetails/style.css" />
+	<link href="/Image enlarge/magicthumb-trial/magicthumb/magicthumb.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+	<div class="page-content ">
+		<div class="page-banner ovbl-dark"
+			style="background-image:url(/Studtemplate/assets/images/banner/banner3.jpg);">
+			<div class="container">
+				<div class="page-banner-entry">
+					<h1 class="text-white">Announcement</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<section class="course-meta-area">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-10 offset-lg-1 course-list">
+					<div class="cl-item">
+						<h4>{{announcement.Message}}</h4>
+						<p>{{announcement.Description}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<center><a href="{{pathimg}}" class="MagicThumb"
+							data-options="expandEasing:cubic-bezier(.09,.63,0,.99);"><img src="{{pathimg}}" /></a>
+					</center>
+				</div>
+				<div class="col-md-3">
+					<center><a href="{{announcement.im}}" class="MagicThumb"
+							data-options="expandEasing:cubic-bezier(.09,.63,0,.99);"><img src="{{announcement.im}}"
+								id="img" /></a></center>
+				</div>
+				<div class="col-md-3">
+					<center><a style="max-width: 100%;" href="../Announcements/video/{{announcement._id}}.mp4"
+							data-options="hint:always;" class="MagicThumb"></a></center>
+				</div>
+				<div class="col-md-3">
+					<center> <a href="../Announcements/pdf/{{announcement._id}}.pdf "><img
+								style="height: 100px; width: auto; margin-top: 10px;" src="{{pathpdf}}" alt="W3Schools"
+								width="104" height="142"><br></a></center>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+<script type="text/javascript" src="/Image enlarge/magicthumb-trial/magicthumb/magicthumb.js"></script>

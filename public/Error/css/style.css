@@ -1,0 +1,160 @@
+/*******************************
+  Table of Contents
+
+  1.0 General Styles
+  2.0 Ghost Elements 
+    2.1 Ghost Animation
+  3.0 Header
+  4.0 Content Styles
+*******************************/
+
+/**********************************/
+/******* 1.0 General Styles *******/
+/**********************************/
+html{
+  min-height: 100%;
+  height: 100%;
+}
+body {
+  margin: 0px;
+  background: url(../imgs/bg.jpg) center/cover #232323;
+  font-weight: normal;
+  font-family: Source Sans Pro, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size:16px;
+  color: #A68793;
+  overflow-x: hidden;
+  min-height: 100%;
+  height: 100%;
+}
+body::before {
+  content: ' ';
+  background: url(../imgs/forest.png) center/cover;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 2
+}
+body::after {
+  content: ' ';
+  background: rgba(0, 0, 0, .2);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+}
+a {
+  text-decoration: none; 
+  color: #fff;
+}
+h3 {
+  -webkit-transform: rotate(-45deg) translateY(-30px);
+          transform: rotate(-45deg) translateY(-30px); 
+  color: white; 
+  width: 100px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+/**********************************/
+/********** 3.0 Header  ***********/
+/**********************************/
+header {
+  padding: 15px 0 0;
+  background: -webkit-linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.2),transparent);
+  background: linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.2),transparent);
+}
+header img {
+  display:block;
+  max-height: 40px;
+  max-width: 40px;
+  margin: 15px 0;
+}
+header .nav > li > a {
+  font-weight: 900;
+}
+header .nav > li > a:focus,
+header .nav > li > a:hover {
+  background: transparent;
+  text-decoration: underline;
+  color: #fff
+}
+header .navbar-brand {
+  font-size: 18px;
+  font-family: 'Baloo Chettan', cursive;
+  text-shadow: 2px 2px rgba(0, 0, 0, .4);
+}
+header .navbar-brand:hover {
+  color: #eee;
+}
+header .navbar-brand span {
+  color: #9dab6e;
+}
+header .navbar-toggle {
+  background: rgba(0, 0, 0, .1);
+}
+header .navbar-toggle .icon-bar {
+  background: #9dab6e;
+}
+
+/**********************************/
+/****** 4.0 Content Styles  *******/
+/**********************************/
+.main {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  text-align: center;
+  position: relative;
+}
+.main .scene {
+  z-index: 1;
+  padding: 0;
+  margin: 0;
+}
+.main .relative {
+  position: relative;
+  z-index: 13
+}
+.main h2 {
+  color: #fff;
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+.main .error {
+  color: #fff;
+  font-size: 18vw;
+  text-align: center;
+  font-weight: 700;
+  font-family: sans-serif;
+  z-index: 1;
+  position: relative;
+}
+.main .btn {
+  border: solid 3px #c7b466;
+  font-size: 18px;
+  font-weight: 900;
+  padding: 18px 65px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+}
+.main .btn:hover {
+  color: #c7b466;
+}
+
+/**********************************/
+/******* 2.0 Ghost Elements *******/
+/**********************************/
+@media (max-width:768px) {
+  .main .error {
+    font-size: 29vw;
+  }
+  .main .btn {
+    padding: 18px 45px;
+  }
+}
+@media (max-width:568px) {
+  .main .btn {
+    padding: 18px 25px;
+  }
+}

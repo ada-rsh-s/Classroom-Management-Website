@@ -1,0 +1,62 @@
+<form method="POST" action="/otplogin">
+    <div class="d-flex justify-content-center align-items-center container">
+        <div class="card py-5 px-3">
+            <center>
+                <h2 style="font-family: Georgia, 'Times New Roman', Times, serif;">OTP VERIFICATION</h2><br>
+                <h5 style="margin-top: -30px;"><small style="font-family: 'Courier New', Courier, monospace;">Enter the
+                        OTP to continue</small></h5>
+
+                <span class="mobile-text">Enter the code we just send on your mobile phone</span>
+                <div class="d-flex flex-row mt-4"><input type="number" name="otp" class="text-center form-control">
+                </div>
+                <center><button type="submit" style="margin-top: 5px;" class="btn btn-success">Submit</button></center>
+        </div>
+    </div>
+</form>
+
+<style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .card {
+        width: 350px;
+        padding: 10px;
+        border-radius: 20px;
+        background: #fff;
+        border: none;
+        height: 340px;
+        position: relative
+    }
+
+    .container {
+        height: 100vh
+    }
+
+    body {
+        background: #eee
+    }
+
+    .mobile-text {
+        color: #989696b8;
+        font-size: 15px
+    }
+
+    .form-control {
+        margin-right: 12px
+    }
+
+    .form-control:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: #ff8880;
+        outline: 0;
+        box-shadow: none
+    }
+
+    .cursor {
+        cursor: pointer
+    }
+</style>

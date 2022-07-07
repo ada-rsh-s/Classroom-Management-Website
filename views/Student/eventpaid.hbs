@@ -1,0 +1,191 @@
+<head>
+
+    <!--====== Required meta tags ======-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Edubin - LMS Education HTML Template</title>
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="/eventdetails/bootstrap.min.css">
+    <link rel="stylesheet" href="/eventdetails/font-awesome.min.css">
+    <link rel="stylesheet" href="/eventdetails/default.css">
+    <link rel="stylesheet" href="/eventdetails/style.css">
+    <link rel="stylesheet" href="/eventdetails/responsive.css">
+    <link href="/Image enlarge/magicthumb-trial/magicthumb/magicthumb.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+
+<body>
+    <div class="page-banner ovbl-dark" style="background-image:url(../Studtemplate/assets/images/banner/banner3.jpg);">
+        <div class="container">
+            <div class="page-banner-entry">
+                <h1 class="text-white">EVENTS</h1>
+            </div>
+        </div>
+    </div>
+    <section id="event-singel" class="pt-120 pb-120 gray-bg">
+        <div class="container">
+            <div class="events-area">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="events-left">
+                            <h3>{{event.Name}}</h3>
+                            <a><img style="margin-top: -4px;" src="/Template/icons/themify-icons/SVG/calendar2.svg"
+                                    alt=""> <span> {{event.Date}}</span></a>
+                            <a><img style="margin-top: -4px;" src="/Template/icons/themify-icons/SVG/time.svg" alt="">
+                                <span> 10:00 Am - 3:00 Pm</span></a>
+                            <a style="color: #ddad01;">{{event.Type}}</a>
+
+                            <center><a href="{{pathimg}}" class="MagicThumb"
+                                    data-options="expandEasing:cubic-bezier(.09,.63,0,.99);"><img
+                                        src="{{pathimg}}" /></a></center>
+                            <center><a href="{{event.im}}" class="MagicThumb"
+                                    data-options="expandEasing:cubic-bezier(.09,.63,0,.99);"><img src="{{event.im}}"
+                                        id="img" /></a></center>
+                            <center class="mt-5"><a href="/Events/video/{{event._id}}.mp4" data-options="hint:always;"
+                                    class="MagicThumb"></a></center>
+                            <center> <a href="/Events/pdf/{{event._id}}.pdf "><img
+                                        style="height: 100px; width: auto; margin-top: 10px;" src="{{pathpdf}}" alt=""
+                                        width="104" height="142"><br></a></center>
+                            <p>{{event.Topic}}</p>
+                        </div> <!-- events left -->
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="events-right">
+                            <center>
+                                <h3 style="margin-bottom: -65px; color: #ffc600;">₹ {{event.Amount}}</h3>
+                            </center>
+
+                            <div class="events-coundwon bg_cover" data-overlay="8"
+                                style="background-image: url(/eventdetails/coundown.jpg)">
+                                <div data-countdown="2020/03/12"></div>
+                                <div class="events-coundwon-btn pt-30">
+                                    <form action="" id="eventbook">
+                                        <input type="text" name="studId" hidden value="{{stud._id}}">
+                                        <input type="text" name="eventId" hidden value="{{event._id}}">
+                                        <input type="number" name="amount" hidden value="{{event.Amount}}">
+                                        <button style="background-color: #ffc600; color: #07294d; margin-bottom: 10px"
+                                            type="submit" class="main-btn">Book Your Seat through <br><img
+                                                style=" margin-top: -90px; margin-bottom: -60px;"
+                                                src="../eventdetails/razorpay.png" alt="" srcset=""></button>
+                                    </form>
+                                    <form action="/paytm" method="POST">
+                                        <input type="text" name="studId" hidden value="{{stud._id}}">
+                                        <input type="text" name="eventId" hidden value="{{event._id}}">
+                                        <input type="number" name="amount" hidden value="{{event.Amount}}">
+                                        <button style="background-color: #ffc600; color: #07294d; margin-bottom: 10px;"
+                                            type="submit" class="main-btn">Book Your Seat through <br><img
+                                                style=" margin-top: -90px; margin-bottom: -60px; height: 40px; width: auto;"
+                                                src="../eventdetails/ezgif-3-55a0994a3e7b.jpg" alt=""
+                                                srcset=""></button>
+
+                                    </form>
+                                    <form action="/paypal" method="POST">
+                                        <input type="text" name="studId" hidden value="{{stud._id}}">
+                                        <input type="text" name="eventId" hidden value="{{event._id}}">
+                                        <input type="number" name="amount" hidden value="{{event.Amount}}">
+                                        <button style="background-color: #ffc600; color: #07294d; margin-bottom: 10px;"
+                                            type="submit" class="main-btn">Book Your Seat through <br><img
+                                                style=" margin-top: -90px; margin-bottom: -60px; height: 40px; width: auto;"
+                                                src="../eventdetails/pp-logo-150px.png" alt="" srcset=""></button>
+
+                                </div>
+                            </div> <!-- events coundwon -->
+                            <div class="events-address mt-30">
+                                <ul>
+                                    <li>
+                                        <div class="singel-address">
+                                            <div class="icon">
+                                                <img style="margin-top: -4px;"
+                                                    src="/Template/icons/themify-icons/SVG/time.svg" alt="">
+                                            </div>
+                                            <div class="cont">
+                                                <h6>Time</h6>
+                                                <span>12:00 Am</span>
+                                            </div>
+                                        </div> <!-- singel address -->
+                                    </li>
+                                    <li>
+                                        <div class="singel-address">
+                                            <div class="icon">
+                                                <img style="margin-top: -4px;"
+                                                    src="/Template/icons/themify-icons/SVG/user.svg" alt="">
+                                            </div>
+                                            <div class="cont">
+                                                <h6>Speaker</h6>
+                                                <span>{{event.Person}}</span>
+                                            </div>
+                                        </div> <!-- singel address -->
+                                    </li>
+                                </ul>
+                            </div> <!-- events address -->
+                        </div> <!-- events right -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- events-area -->
+        </div> <!-- container -->
+    </section>
+    <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+</body>
+<script>
+    $("#eventbook").submit((e) => {
+        e.preventDefault()
+        console.log($('#eventbook').serialize())
+        $.ajax({
+            url: '/payevent',
+            method: 'post',
+            data: $('#eventbook').serialize(),
+            success: (response) => {
+                razorpayPayment(response)
+            }
+        })
+    })
+    function razorpayPayment(order) {
+        var options = {
+            "key": "rzp_test_BTghMaFUWF72Za", // Enter the Key ID generated from the Dashboard
+            "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            "currency": "INR",
+            "name": "Adarsh S",
+            "description": order.id,
+            "image": "https://avatars.githubusercontent.com/u/64910179?v=4",
+            "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "handler": function (response) {
+                //alert(response.razorpay_payment_id);
+                // alert(response.razorpay_order_id);
+                // alert(response.razorpay_signature)
+                verifyPayment(response, order)
+            },
+            "notes": {
+                "address": "Adarsh Villa,Tarur Po.,Palakkad Dt"
+            },
+            "theme": {
+                "color": "#ffc600"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+    }
+    function verifyPayment(payment, order) {
+        console.log(payment,order)
+        $.ajax({
+            url: '/verify-payment',
+            data: {
+                payment,
+                order
+            },
+            method: 'post',
+            success: (response) => {
+                console.log(response)
+                if (response.status) {
+                    location.href = '/success'
+                } else {
+                    alert("Payment Failed")
+                }
+            }
+        })
+    }
+</script>
+<script type="text/javascript" src="/Image enlarge/magicthumb-trial/magicthumb/magicthumb.js"></script>

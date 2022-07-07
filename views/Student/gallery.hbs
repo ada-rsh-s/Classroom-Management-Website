@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from preview.colorlib.com/theme/shutter/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Dec 2020 10:42:30 GMT -->
+
+<head>
+    <title>Shutter &mdash; Colorlib Website Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="../Gallery/bootstrap.min.css">
+    <link rel="stylesheet" href="../Gallery/magnific-popup.css">
+    <link rel="stylesheet" href="../Gallery/jquery-ui.css">
+    <link rel="stylesheet" href="../Gallery/owl.carousel.min.css">
+    <link rel="stylesheet" href="../Gallery/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../Gallery/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../Gallery/aos.css">
+    <link rel="stylesheet" href="../Gallery/fancybox.min.css">
+    <link rel="stylesheet" href="../Gallery/style.css">
+    <link href="../Image enlarge/magicthumb-trial/magicthumb/magicthumb.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body style="background-color: #ffff;">
+    <div class="page-banner ovbl-dark" style="background-image:url(../Studtemplate/assets/images/banner/banner3.jpg);">
+        <div class="container">
+            <div class="page-banner-entry">
+                <h1 class="text-white">GALLERY</h1>
+            </div>
+        </div>
+    </div>
+    <div class="site-wrap">
+
+        <main>
+            <div class="container-fluid photos">
+                <div class="row align-items-stretch">
+
+                    {{#each photos}}
+                    <div class="col-6 col-md-6 col-lg-3 mt-5" data-aos="fade-up" data-aos-delay="200">
+                        <a href="../Photos/{{this._id}}.jpg" class="MagicThumb"
+                            data-options="group: 1; captionSource:alt;"><img src="../Photos/{{this._id}}.jpg"
+                                alt="{{this.Name}}" /></a>
+
+                    </div>
+                    {{/each}}
+                </div>
+
+        </main>
+    </div>
+    <script src="../Gallery/jquery-3.3.1.min.js"></script>
+    <script src="../Gallery/jquery-migrate-3.0.1.min.js"></script>
+    <script src="../Gallery/jquery-ui.js"></script>
+    <script src="../Gallery/popper.min.js"></script>
+    <script src="../Gallery/bootstrap.min.js"></script>
+    <script src="../Gallery/owl.carousel.min.js"></script>
+    <script src="../Gallery/jquery.stellar.min.js"></script>
+    <script src="../Gallery/jquery.countdown.min.js"></script>
+    <script src="../Gallery/jquery.magnific-popup.min.js"></script>
+    <script src="../Gallery/bootstrap-datepicker.min.js"></script>
+    <script src="../Gallery/aos.js"></script>
+    <script src="../Gallery/jquery.fancybox.min.js"></script>
+    <script src="../Gallery/main.js"></script>
+    <script type="text/javascript" src="../Image enlarge/magicthumb-trial/magicthumb/magicthumb.js"></script>
+
+</body>
+
+</html>

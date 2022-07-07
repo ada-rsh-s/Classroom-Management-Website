@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+
+<head>
+    <!-- Google Tag Manager -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TUTOR LOGIN</title>
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7CPoppins:400,500,700,800,900%7CRoboto:100,300,400,400i,500,700">
+
+    <!-- Custom Stylesheet -->
+    <link type="text/css" rel="stylesheet" href="../Tutorlogin/css/style.css">
+
+</head>
+
+<body id="top">
+
+    <!-- Login 21 start -->
+    <div class="login-21">
+
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <div class="col-xl-4 col-lg-5 col-md-12 col-pad-0 bg-color-10">
+
+                    <div class="form-section">
+
+                        <div class="logo">
+                            <a href="/">
+                                <h6 style="float: left ; margin-top: -150px; margin-bottom: 60px; color: white;"><img
+                                        style="height: 20px; width: auto; margin-top: -4px;"
+                                        src="/Template/icons/themify-icons/SVG/arrow-left.svg" alt="" srcset=""> HOME
+                                </h6>
+                            </a>
+
+                            <h3 style=" color: white;">TUTOR</h3>
+
+                        </div>
+
+                        <div class="login-inner-form">
+                            <form action="/tutor/login" method="POST">
+                                <div class="form-group form-box">
+                                    <input type="email" name="Email" class="input-text" placeholder="Email Address"
+                                        value="adarshvillasuni@gmail.com">
+                                    <i class="flaticon-mail-2"></i>
+                                </div>
+                                <div class=" form-group form-box">
+                                    <input type="password" name="Password" class="input-text" placeholder="Password"
+                                        value="adarsh">
+                                    <i class="flaticon-password"></i>
+
+                                    {{#if loginErr}}
+                                    <p style="color: red;" class="error">{{loginErr}}</p>
+                                    {{/if}}
+                                </div>
+
+                                <div class="form-group mt-2">
+                                    <button type="submit" class="btn-md btn-theme btn-block">Login</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>  
+                <div class="col-xl-8 col-lg-7 col-md-12 col-pad-0 bg-img none-992">
+                    <div class="info">
+                        <h1>Tutor Login</h1>
+                        <p>Enter your Email and Password to Continue</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

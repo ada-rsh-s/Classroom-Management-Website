@@ -1,0 +1,145 @@
+<head>
+
+    <!--====== Required meta tags ======-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Edubin - LMS Education HTML Template</title>
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="/eventdetails/bootstrap.min.css">
+    <link rel="stylesheet" href="/eventdetails/font-awesome.min.css">
+    <link rel="stylesheet" href="/eventdetails/default.css">
+    <link rel="stylesheet" href="/eventdetails/style.css">
+    <link rel="stylesheet" href="/eventdetails/responsive.css">
+    <link href="/Image enlarge/magicthumb-trial/magicthumb/magicthumb.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+
+<body>
+    <section style="margin-top: -515px;" id="event-singel" class="pt-120 pb-120 gray-bg">
+        <div class="container">
+            <div class="events-area">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="events-left">
+                            <h3>{{event.Name}}</h3>
+                            <a><img style="margin-top: -4px;" src="/Template/icons/themify-icons/SVG/calendar2.svg"
+                                    alt=""> <span> {{event.Date}}</span></a>
+
+
+                            <center><a href="{{pathimg}}" class="MagicThumb"
+                                    data-options="expandEasing:cubic-bezier(.09,.63,0,.99);"><img
+                                        src="{{pathimg}}" /></a></center>
+                            <center><a href="{{event.im}}" class="MagicThumb"
+                                    data-options="expandEasing:cubic-bezier(.09,.63,0,.99);"><img src="{{event.im}}"
+                                        id="img" /></a></center>
+                            <center class="mt-5"><a href="/Events/video/{{event._id}}.mp4" data-options="hint:always;"
+                                    class="MagicThumb"></a></center>
+                            <center> <a href="/Events/pdf/{{event._id}}.pdf "><img
+                                        style="height: 100px; width: auto; margin-top: 10px;" src="{{pathpdf}}" alt=""
+                                        width="104" height="142"><br></a></center>
+                            <p>{{event.Topic}}</p>
+                        </div> <!-- events left -->
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="events-right">
+
+                            <div style="margin-top: 100px;" class="events-address ">
+                                <ul>
+
+                                    <li>
+                                        <div class="singel-address">
+                                            <div class="icon">
+                                                <img style="margin-top: -4px;"
+                                                    src="/Template/icons/themify-icons/SVG/user.svg" alt="">
+                                            </div>
+                                            <div class="cont">
+                                                <h6>Speaker</h6>
+                                                <span>{{event.Person}}</span>
+                                            </div>
+                                        </div> <!-- singel address -->
+                                    </li>
+                                </ul>
+                            </div> <!-- events address -->
+                            <center><button onclick="delconfirm('{{event._id}}')"
+                                    class="mt-5 btn btn-danger">Delete</button></center>
+
+                        </div> <!-- events right -->
+                    </div>
+
+                </div> <!-- row -->
+
+                <h2 style="font-family: Georgia, 'Times New Roman', Times, serif; color: #ffc660;" class="text-center">
+                    PAID STUDENTS</h2>
+                <table class="table table-bordered table-hover table-checkable " id="kt_datatable">
+                    <thead>
+
+                        <tr>
+                            <th>
+                                <center>Roll no</center>
+                            </th>
+                            <th>
+                                <center>Name</center>
+                            </th>
+                            <th>
+                                <center>Phone No</center>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each stud}}
+                        {{#each students}}
+                        <tr>
+                            <td>
+                                <center>{{this.Rollno}}
+                                </center>
+                            </td>
+                            <td>
+                                <center>{{this.Name}}
+                                </center>
+                            </td>
+
+                            <td>
+                                <center> {{this.Phone}}
+                                </center>
+                            </td>
+                        </tr>
+                        {{/each}}
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div> <!-- events-area -->
+        </div> <!-- container -->
+
+    </section>
+    <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+</body>
+<script type="text/javascript" src="/Image enlarge/magicthumb-trial/magicthumb/magicthumb.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+    function delconfirm(eventid) {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this Event!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    window.location = "/tutor/eventdelete/" + eventid
+                } else {
+                    swal("Your Event is safe!");
+                }
+            });
+    }
+</script>
+<style>
+    .swal-modal .swal-text {
+        text-align: center;
+    }
+</style>

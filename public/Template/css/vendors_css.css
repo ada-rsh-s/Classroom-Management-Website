@@ -1,0 +1,20 @@
+/****************************/
+/** Imports Plugin css **/
+/****************************/
+@import url(../Template/vendor_components/bootstrap/dist/css/bootstrap.css);
+@import url(../Template/vendor_components/OwlCarousel2/dist/assets/owl.theme.default.min.css);
+@import url(../Template/vendor_components/OwlCarousel2/dist/assets/owl.carousel.css);
+@import url(../Template/vendor_components/Magnific-Popup-master/dist/magnific-popup.css);
+@import url(../Template/vendor_components/lightbox-master/dist/ekko-lightbox.css);
+@import url(../Template/vendor_components/select2/dist/css/select2.min.css);
+@import url(../Template/vendor_components/bootstrap-daterangepicker/daterangepicker.css);
+@import url(../Template/vendor_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css);
+@import url(../Template/vendor_components/bootstrap-select/dist/css/bootstrap-select.css);
+@import url(../Template/vendor_plugins/timepicker/bootstrap-timepicker.min.css);
+@import url(../Template/vendor_components/fullcalendar/fullcalendar.min.css);
+@import "../../assets/vendor_components/fullcalendar/fullcalendar.print.min.css" print;
+@import url(../Template/vendor_components/aos/aos.css);
+/* Menus core CSS */
+@import url("../corenav-master/coreNavigation-1.1.3.css");
+
+/*# sourceMappingURL=vendors_css.css.map */

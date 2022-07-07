@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<!-- META ============================================= -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+	<meta name="robots" content="" />
+
+	<!-- DESCRIPTION -->
+	<meta name="description" content="EduChamp : Education HTML Template" />
+
+	<!-- OG -->
+	<meta property="og:title" content="EduChamp : Education HTML Template" />
+	<meta property="og:description" content="EduChamp : Education HTML Template" />
+	<meta property="og:image" content="" />
+	<meta name="format-detection" content="telephone=no">
+	<title>E-CLASSROOM</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../Studtemplate/assets/images/favicon.png" />
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="../Studtemplate/assets/css/assets.css">
+
+	<link rel="stylesheet" type="text/css" href="../Studtemplate/assets/css/typography.css">
+
+	<link rel="stylesheet" type="text/css" href="../Studtemplate/assets/css/shortcodes/shortcodes.css">
+
+	<link rel="stylesheet" type="text/css" href="../Studtemplate/assets/css/style.css">
+	<link class="skin" rel="stylesheet" type="text/css" href="../Studtemplate/assets/css/color/color-1.css">
+
+	<link rel="stylesheet" type="text/css" href="../Studtemplate/assets/vendors/revolution/css/layers.css">
+	<link rel="stylesheet" type="text/css" href="../Studtemplate/assets/vendors/revolution/css/settings.css">
+	<link rel="stylesheet" type="text/css" href="../Studtemplate/assets/vendors/revolution/css/navigation.css">
+
+</head>
+{{#if status}}
+	<body id="bg" onload="notify()">
+		{{else}}	
+<body id="bg">
+			{{/if}}
+
+	<div class="page-wraper">
+		<header class="header rs-nav header-transparent">
+
+			<div class="sticky-header navbar-expand-lg">
+				<div class="menu-bar clearfix">
+					<div class="container col-md-12  clearfix">
+						<!-- Header Logo ==== -->
+						<div class="menu-logo">
+							<a href="/student"><img src="../Studtemplate/assets/images/logo.png" alt=""></a>
+						</div>
+						<!-- Mobile Nav Button ==== -->
+						<button class="navbar-toggler collapsed menuicon justify-content-end" type="button"
+							data-toggle="collapse" data-target="#menuDropdown" aria-controls="menuDropdown"
+							aria-expanded="false" aria-label="Toggle navigation">
+							<span></span>
+							<span></span>
+							<span></span>
+						</button>
+
+						<div class="menu-links navbar-collapse collapse justify-content-start" id="menuDropdown">
+							<div class="menu-logo">
+								<a href="/student"><img style="width: auto;"
+										src="../Studtemplate/assets/images/logo.png" alt=""></a>
+							</div>
+							<ul class="nav navbar-nav">
+								<li class="active"><a href="/">Home</a>
+								</li>
+								<li><a href="/today">Today's Task</a>
+								</li>
+								<li class="add-mega-menu"><a href="/attendance">Attendance</a>
+								</li>
+								<li><a href="/assignments">Assignments</a>
+								</li>
+								<li class="nav-dashboard"><a href="/announcement">Announcement</a>
+								</li>
+								<li class="nav-dashboard"><a href="/events">Events</a>
+								</li>
+								<li class="nav-dashboard"><a href="/notes">Notes</a>
+								</li>
+								<li class="nav-dashboard"><a href="/gallery">Gallery</a>
+								</li>
+								<li class="nav-dashboard"><a href="/chat">Chat</a>
+								</li>
+								<li class="nav-dashboard"><a href="/profile">Profile</a>
+								</li>
+								<li class=""><a href="javascript:;"><img onmouseover="notihide()" id="bell"
+											style="height: 25px; width: auto;"
+											src="../Template/icons/themify-icons/SVG/bell.svg" alt="" srcset=""><span
+											id="notify"
+											style="display: none; position: absolute; padding: 5px 5px;border-radius: 50%; background-color: red; margin-left: 17px; margin-top: -25px;"></span>
+									</a>
+
+									<ul style="width: 250px; height: 200px; overflow: auto" class="sub-menu">
+										<li id="display" style="display: none;"><a id="date" style="color: #fc1864;"> -
+											</a><span
+												style="margin-top: -30px; font-size: 14px; margin-right: 30px; text-transform: none; color: #fc1864; float: right;"
+												id="type"></span><br><a id="topic" style="margin-top: -35px;"></a></li>
+
+										{{#each notifications}}
+
+										<li><a style="color: #fc1864;">{{this.Date}} - {{this.type}}</a><br><a
+												style="margin-top: -35px;">{{this.topic}}</a></li>
+										{{/each}}
+									</ul>
+								</li>
+
+								<li style=" margin-right: -50px;" class="nav-dashboard"><a href="/studentout"><button
+											style="margin-top: -10px;" class="btn btn-warning">Logout</button></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="page-content bg-white">
+			<div class="rev-slider">
+				<div id="rev_slider_486_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container"
+					data-alias="news-gallery36" data-source="gallery"
+					style="margin:0px auto;background-color:#ffffff;padding:0px;margin-top:0px;margin-bottom:0px;">
+					<div id="rev_slider_486_1" class="rev_slider fullwidthabanner" style="display:none;"
+						data-version="5.3.0.2">
+						<ul>
+							<li data-index="rs-100" data-transition="parallaxvertical" data-slotamount="default"
+								data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default"
+								data-easeout="default" data-masterspeed="default" data-thumb="error-404.html"
+								data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7"
+								data-saveperformance="off" data-title="A STUDY ON HAPPINESS" data-param1=""
+								data-param2="" data-param3="" data-param4="" data-param5="" data-param6=""
+								data-param7="" data-param8="" data-param9="" data-param10=""
+								data-description="Science says that Women are generally happier">
+								<!-- MAIN IMAGE -->
+								<img src="/Studtemplate/assets/images/slider/slide2.jpg" alt=""
+									data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"
+									data-bgparallax="10" class="rev-slidebg" data-no-retina />
+
+								<!-- LAYER NR. 1 -->
+								<div class="tp-caption tp-shape tp-shapewrapper " id="slide-100-layer-1"
+									data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+									data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
+									data-width="full" data-height="full" data-whitespace="nowrap" data-type="shape"
+									data-basealign="slide" data-responsive_offset="off" data-responsive="off"
+									data-frames='[{"from":"opacity:0;","speed":1,"to":"o:1;","delay":0,"ease":"Power4.easeOut"},{"delay":"wait","speed":1,"to":"opacity:0;","ease":"Power4.easeOut"}]'
+									data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
+									data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
+									data-paddingleft="[0,0,0,0]"
+									style="z-index: 5;background-color:rgba(2, 0, 11, 0.80);border-color:rgba(0, 0, 0, 0);border-width:0px;">
+								</div>
+								<!-- LAYER NR. 2 -->
+								<div class="tp-caption Newspaper-Title   tp-resizeme" id="slide-100-layer-2"
+									data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+									data-y="['top','top','top','top']" data-voffset="['250','250','250','240']"
+									data-fontsize="['50','50','50','30']" data-lineheight="['55','55','55','35']"
+									data-width="full" data-height="none" data-whitespace="normal" data-type="text"
+									data-responsive_offset="on"
+									data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+									data-textAlign="['center','center','center','center']" data-paddingtop="[0,0,0,0]"
+									data-paddingright="[0,0,0,0]" data-paddingbottom="[10,10,10,10]"
+									data-paddingleft="[0,0,0,0]"
+									style="z-index: 6; font-family:rubik; font-weight:700; text-align:center; white-space: normal;">
+									HI {{stud.Name}}{{#each attendance}}
+									<BR></BR><a style="color: greenyellow; font-size: 24px;"
+										href="javascript:;">{{this.status}}</a>
+
+									{{/each}}
+								</div>
+
+							</li>
+
+							<!-- SLIDE  -->
+						</ul>
+
+
+
+					</div><!-- END REVOLUTION SLIDER -->
+				</div>
+			</div>
+			
+			<div style="margin-bottom: -130px;" class="scroll">
+
+				<a href="#schedule">
+					<div class="mouse">
+						<div style="margin-top: -7px;" class="wheel"></div>
+					</div>
+				</a>
+
+			</div>
+
+
+			<!-- Main Slider -->
+			<div class="content-block">
+
+				<!-- Our Services -->
+				<div class="section-area content-inner service-info-bx">
+					<div class="container">
+
+						<div class="row">
+
+							<div class="col-lg-4 col-md-4 col-sm-6">
+
+								<div class="service-bx">
+									<div class="action-box">
+										<img src="../Studtemplate/assets/images/our-services/pic1.jpg" alt="">
+									</div>
+									<div class="info-bx text-center">
+										<div class="feature-box-sm radius bg-white">
+											<i class="fa fa-book text-primary"></i>
+										</div>
+										<h4><a>Notes</a></h4>
+										<a href="/notes" class="btn radius-xl">View Notes</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-4 col-sm-6">
+								<div class="service-bx">
+									<div class="action-box">
+										<img src="../Studtemplate/assets/images/our-services/pic2.jpg" alt="">
+									</div>
+									<div class="info-bx text-center">
+										<div class="feature-box-sm radius bg-white">
+											<i class="fa fa-bank text-primary"></i>
+										</div>
+										<h4><a>Attendance</a></h4>
+										<a href="/attendance" class="btn radius-xl">View Attendance</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-4 col-sm-12">
+								<div class="service-bx m-b0">
+									<div class="action-box">
+										<img src="../Studtemplate/assets/images/our-services/pic3.jpg" alt="">
+									</div>
+									<div class="info-bx text-center">
+										<div class="feature-box-sm radius bg-white">
+											<i class="fa fa-file-text-o text-primary"></i>
+										</div>
+										<h4><a>Today's Task</a></h4>
+										<a href="/today" class="btn radius-xl">View Tasks</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Recent News -->
+				<div class="section-area section-sp2">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12 heading-bx ">
+								<center>
+									<h2 class="title-head m-b0">ANNOUNCEMENT</h2>
+								</center>
+								<center>
+									<p class="m-b0">Upcoming programmes. </p>
+								</center>
+
+							</div>
+						</div>
+						<div
+							class="upcoming-event-carousel owl-carousel owl-btn-center-lr owl-btn-1 col-12 p-lr0  m-b30">
+							{{#each announcement}}
+							<div class="item">
+								<div class="recent-news">
+									<div class="info-bx">
+
+										<h5 class="post-title"><a href="/announcement/{{this._id}}">{{this.Message}}</a>
+										</h5>
+										<p id="description">{{this.Description}}..</p>
+										<style>
+											#description {
+												width: 300px;
+												white-space: nowrap;
+												overflow: hidden;
+												text-overflow: ellipsis;
+											}
+										</style>
+										<div class="post-extra">
+											<a href="/announcement/{{this._id}}" class="btn-link">READ MORE</a>
+											<a class="comments-bx">{{this.Date}}</a>
+										</div>
+
+									</div>
+								</div>
+							</div>
+							{{/each}}
+						</div>
+					</div>
+				</div>
+				<!-- Form END -->
+				<div style="margin-top: -100px;" id="event" class="section-area section-sp2">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12 text-center heading-bx">
+								<h2 class="title-head m-b0">Upcoming <span>Events</span></h2>
+								<p class="m-b0">Upcoming Education Events To Feed Brain. </p>
+							</div>
+						</div>
+						<div class="row">
+							<div
+								class="upcoming-event-carousel owl-carousel owl-btn-center-lr owl-btn-1 col-12 p-lr0  m-b30">
+								{{#each events}}
+								<div class="item">
+									<div class="event-bx">
+										<div class="info-bx d-flex">
+											<div>
+
+											</div>
+											<a href="/event/{{this._id}}">
+												<div class="event-info">
+													<h4 class="event-title">{{this.Name}}</h4>
+													<ul class="media-post">
+														<li><i class="fa fa-clock-o"></i>{{this.Date}}</li>
+													</ul>
+													<p><b style="color: #f7b20;">Speaker : </b>{{this.Person}}</p>
+												</div>
+											</a>
+										</div>
+									</div>
+								</div>
+								{{/each}}
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+		<!-- Site footer -->
+		<footer class="site-footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 col-md-9">
+						<h6>About</h6>
+						<p class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative to help
+							the upcoming programmers with the code. Scanfcode focuses on providing the most efficient
+							code or snippets as the code wants to be simple. We will help programmers build up concepts
+							in different programming languages that include C, C++, Java, HTML, CSS, Bootstrap,
+							JavaScript, PHP, Android, SQL and Algorithm.</p>
+					</div>
+
+
+					<div class="col-xs-6 col-md-3">
+						<h6>Quick Links</h6>
+						<ul class="footer-links">
+							<li><a style="color: whitesmoke;" href="/">Home</a></li>
+							<li><a style="color: whitesmoke;" href="/profile">Profile</a></li>
+							<li><a style="color: whitesmoke;" href="/attendance">Attendance</a></li>
+							<li><a style="color: whitesmoke;" href="/events">Events</a></li>
+							<li><a style="color: whitesmoke;" href="/announcement">Announcements</a></li>
+						</ul>
+					</div>
+				</div>
+				<hr>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-sm-6 col-xs-12">
+						<p class="copyright-text">Copyright ©2021 All rights reserved &nbsp;
+							<img style=" border-radius: 50%;" src="../Template/logo.jpg" alt="">&nbsp;
+							<a style="color: #28a9e2;" href="http://softwaresolutionsass.in/">Adarsh Software
+								Solutions</a>
+						</p>
+					</div>
+
+					<div class="col-md-4 col-sm-6 col-xs-12">
+						<ul style="margin-right: 16px;" class="social-icons">
+							<li><a class="facebook" href="https://www.facebook.com/adarsh.s.92505956/"><i
+										class="fa fa-facebook"></i></a></li>
+							<li><a class="twitter" href="https://twitter.com/Adarsh45265929"><i
+										class="fa fa-twitter"></i></a></li>
+							<li><a class="dribbble" href="https://www.instagram.com/_a_d_a_r_s_h_s_/"><i
+										class="fa fa-instagram"></i></a></li>
+							<li><a class="linkedin" href="https://www.linkedin.com/in/adarsh-s-b7172b1a7/"><i
+										class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<script src="../socket.io/socket.io.js"></script>
+		<script>
+			function notihide() {
+				document.getElementById("notify").style.display = "none"
+			}
+			var socket = io()
+			socket.on("topicassign", function (topic, type, date) {
+				document.getElementById("notify").style.display = "block"
+				document.getElementById("display").style.display = "block"
+				document.getElementById("date").innerHTML = date
+				document.getElementById("type").innerHTML = type
+				document.getElementById("topic").innerHTML = topic
+			})
+		</script>
+		<style>
+			.scroll {
+				width: 20px;
+				height: 30px;
+				position: absolute;
+				bottom: 50%;
+				left: 50%;
+				cursor: pointer;
+				margin-left: -15px;
+			}
+
+			.scroll .mouse {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: block;
+				border: 2px solid #ffff;
+				border-radius: 20px;
+			}
+
+			.scroll .wheel {
+				width: 4px;
+				height: 4px;
+				top: 10px;
+				left: 50%;
+				position: absolute;
+				background: #fff;
+				display: block;
+				border-radius: 50%;
+				margin-left: -2px;
+				animation-name: scroll-wheel;
+				animation-duration: 3s;
+				animation-iteration-count: infinite;
+			}
+
+			@keyframes scroll-wheel {
+				from {
+					transform: translate3d(0, 0, 0);
+					opacity: 1;
+				}
+
+				to {
+					transform: translate3d(0, 10px, 0);
+					opacity: 0;
+				}
+			}
+
+			.site-footer {
+				background-color: #26272b;
+				padding: 45px 0 20px;
+				font-size: 15px;
+				line-height: 24px;
+				color: #737373;
+			}
+
+			.site-footer hr {
+				border-top-color: #bbb;
+				opacity: 0.5
+			}
+
+			.site-footer hr.small {
+				margin: 20px 0
+			}
+
+			.site-footer h6 {
+				color: #fff;
+				font-size: 16px;
+				text-transform: uppercase;
+				margin-top: 5px;
+				letter-spacing: 2px
+			}
+
+			.site-footer a {
+				color: #737373;
+			}
+
+			.site-footer a:hover {
+				color: #3366cc;
+				text-decoration: none;
+			}
+
+			.footer-links {
+				padding-left: 0;
+				list-style: none
+			}
+
+			.footer-links li {
+				display: block
+			}
+
+			.footer-links a {
+				color: #737373
+			}
+
+			.footer-links a:active,
+			.footer-links a:focus,
+			.footer-links a:hover {
+				color: #3366cc;
+				text-decoration: none;
+			}
+
+			.footer-links.inline li {
+				display: inline-block
+			}
+
+			.site-footer .social-icons {
+				text-align: right
+			}
+
+			.site-footer .social-icons a {
+				width: 40px;
+				height: 40px;
+				line-height: 40px;
+				margin-right: 0;
+				border-radius: 100%;
+				background-color: #33353d
+			}
+
+			.copyright-text {
+				margin: 0
+			}
+
+			@media (max-width:991px) {
+				.site-footer [class^=col-] {
+					margin-bottom: 30px
+				}
+			}
+
+			@media (max-width:767px) {
+				.site-footer {
+					padding-bottom: 0
+				}
+
+				.site-footer .copyright-text,
+				.site-footer .social-icons {
+					text-align: center
+				}
+			}
+
+			.social-icons {
+				padding-left: 0;
+				margin-bottom: 0;
+				list-style: none
+			}
+
+			.social-icons li {
+				display: inline-block;
+				margin-bottom: 4px
+			}
+
+			.social-icons li.title {
+				margin-right: 15px;
+				text-transform: uppercase;
+				color: #96a2b2;
+				font-weight: 700;
+				font-size: 13px
+			}
+
+			.social-icons a {
+				background-color: #eceeef;
+				color: #818a91;
+				font-size: 16px;
+				display: inline-block;
+				line-height: 44px;
+				width: 44px;
+				height: 44px;
+				text-align: center;
+				border-radius: 100%;
+				-webkit-transition: all .2s linear;
+				-o-transition: all .2s linear;
+				transition: all .2s linear
+			}
+
+			.social-icons a:active,
+			.social-icons a:focus,
+			.social-icons a:hover {
+				color: #fff;
+				background-color: #29aafe
+			}
+
+			.social-icons.size-sm a {
+				line-height: 34px;
+				height: 34px;
+				width: 34px;
+				font-size: 14px
+			}
+
+			.social-icons a.facebook:hover {
+				background-color: #3b5998
+			}
+
+			.social-icons a.twitter:hover {
+				background-color: #00aced
+			}
+
+			.social-icons a.linkedin:hover {
+				background-color: #007bb6
+			}
+
+			.social-icons a.dribbble:hover {
+				background-color: #ea4c89
+			}
+
+			@media (max-width:767px) {
+				.social-icons li.title {
+					display: block;
+					margin-right: 0;
+					font-weight: 600
+				}
+			}
+		</style>
+		<!-- Footer END ==== -->
+		<button class="back-to-top fa fa-chevron-up"></button>
+	</div>
+
+	<!-- External JavaScripts -->
+
+	<script src="../Studtemplate/assets/js/jquery.min.js"></script>
+	<script src="../Studtemplate/assets/vendors/bootstrap/js/popper.min.js"></script>
+	<script src="../Studtemplate/assets/vendors/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../Studtemplate/assets/vendors/bootstrap-select/bootstrap-select.min.js"></script>
+	<script src="../Studtemplate/assets/vendors/counter/waypoints-min.js"></script>
+	<script src="../Studtemplate/assets/vendors/counter/counterup.min.js"></script>
+	<script src="../Studtemplate/assets/vendors/masonry/masonry.js"></script>
+	<script src="../Studtemplate/assets/vendors/owl-carousel/owl.carousel.js"></script>
+	<script src="../Studtemplate/assets/js/functions.js"></script>
+	<!-- Revolution JavaScripts Files -->
+	<script src="../Studtemplate/assets/vendors/revolution/js/jquery.themepunch.tools.min.js"></script>
+	<script src="../Studtemplate/assets/vendors/revolution/js/jquery.themepunch.revolution.min.js"></script>
+
+	<script
+		src="../Studtemplate/assets/vendors/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+	<script>
+		jQuery(document).ready(function () {
+			var ttrevapi;
+			var tpj = jQuery;
+			if (tpj("#rev_slider_486_1").revolution == undefined) {
+				revslider_showDoubleJqueryError("#rev_slider_486_1");
+			} else {
+				ttrevapi = tpj("#rev_slider_486_1").show().revolution({
+
+					responsiveLevels: [1240, 1024, 778, 480],
+					visibilityLevels: [1240, 1024, 778, 480],
+					gridwidth: [1240, 1024, 778, 480],
+					gridheight: [768, 600, 600, 600],
+					lazyType: "none",
+					parallax: {
+						type: "scroll",
+						origo: "enterpoint",
+						speed: 4000,
+						levels: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 46, 47, 48, 49, 50, 55],
+						type: "scroll",
+					}
+				});
+			}
+		});	
+	function notify(){
+		setTimeout(alertFunc, 3000);
+}
+function alertFunc(){
+	swal("TODAYS ATTENDANCE!", "Watch todays class to mark the attendance!")	
+
+}
+	</script>
+</body>
+
+</html>

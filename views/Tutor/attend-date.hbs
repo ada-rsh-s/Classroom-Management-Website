@@ -1,0 +1,83 @@
+<head>
+
+	<meta charset="utf-8" />
+	<meta name="description" content="Headers datatables examples" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+
+	<link href="/Studtable/style.bundled1cf.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+
+<body id="kt_body"
+	class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+	<div style="margin-top: -300px;" class="d-flex flex-column flex-root">
+
+		<div class="d-flex flex-row flex-column-fluid page">
+
+			<div class="d-flex flex-column flex-row-fluid" id="kt_wrapper">
+				<center>
+					<h1 style="margin-top: -90px; font-family: 'Times New Roman', Times, serif;">ATTENDANCE</h1>
+				</center>
+				<center>
+					<br>
+					<h4 style="margin-top: -50px;">{{date}}</h4>
+				</center>
+
+				<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
+					<div class="d-flex flex-column-fluid">
+						<!--begin::Container-->
+
+						<div class="container">
+
+
+							<div class="card card-custom">
+								<div class="card-body">
+									<!--begin: Datatable-->
+									<table class="table table-bordered table-hover table-checkable " id="kt_datatable">
+										<thead>
+
+											<tr>
+												<th>
+													<center>Roll No</center>
+												</th>
+												<th>
+													<center>Name</center>
+												</th>
+												<th>
+													<center>Attendance</center>
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											{{#each attendance}}
+											<tr>
+												{{#each this.student}}
+												<td>
+													<center>{{this.Rollno}}</center>
+												</td>
+												<td>
+													<center>{{this.Name}}</center>
+												</td>
+												{{/each}}
+												<td>
+													<center>{{this.status}}</center>
+												</td>
+												<td hidden nowrap="nowrap"></td>
+											</tr>
+											{{/each}}
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</body>

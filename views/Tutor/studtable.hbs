@@ -1,0 +1,127 @@
+<head>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+
+	<script type="text/javascript" charset="utf8"
+		src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+	<link href="../Studtable/style.bundled1cf.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+	<div style="margin-top: -300px;" class="d-flex flex-column flex-root">
+
+		<div class="d-flex flex-row flex-column-fluid page">
+
+			<div class="d-flex flex-column flex-row-fluid" id="kt_wrapper">
+				<center>
+					<h1 style="margin-top: -50px;">STUDENTS DETAILS</h1>
+				</center>
+				<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
+					<div class="d-flex flex-column-fluid">
+						<!--begin::Container-->
+
+						<div class="container">
+
+
+							<div class="card card-custom">
+								<a style="" href="/tutor/addstudent"><button id="add"
+										style=" margin-right: 30px;  margin-top: 10px; float: right;"
+										class="btn btn-success">Add Student</button></a>
+								<img style="height: 23px; width: auto; margin-left: -529px;"
+									src="../Template/icons/themify-icons/SVG/info-alt.svg" alt="" srcset="">
+								<p style="color: #32CD32; margin-top: -21px; margin-left: 31px;">Click on the student
+									name to view his/her details .</p>
+
+								<div class="card-body">
+									<!--begin: Datatable-->
+
+									<table id="studtable" class="table table-bordered table-hover table-checkable "
+										id="kt_datatable">
+										<thead>
+
+											<tr>
+												<th>
+													<center style="color: black;">Roll No</center>
+												</th>
+												<th>
+													<center>Name</center>
+												</th>
+												<th>
+													<center>Edit</center>
+												</th>
+												<th>
+													<center>Delete</center>
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											{{#each students}}
+											<tr>
+												<td>
+													<center>{{this.Rollno}}
+													</center>
+												</td>
+												<td>
+													<center><a style="color: black;"
+															href="/tutor/studetails/{{this._id}}">{{this.Name}}</a>
+													</center>
+												</td>
+												<td>
+													<center><a href="/tutor/editstud/{{this._id}}"><img
+																src="../Template/icons/themify-icons/SVG/pencil-alt.svg"
+																alt="" srcset=""></a></center>
+												</td>
+												<td>
+													<center> <a style="cursor: pointer;"
+															onclick="delconfirm('{{this._id}}')"><img
+																src="../Studtable/trash-9-24.ico" alt="" srcset=""></a>
+													</center>
+												</td>
+											</tr>
+											{{/each}}
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</body>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+	function delconfirm(studid) {
+		swal({
+			title: "Are you sure?",
+			text: "Once deleted, you will not be able to recover this Student!",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+		})
+			.then((willDelete) => {
+				if (willDelete) {
+					window.location = "/tutor/delete-student/" + studid
+				} else {
+					swal("Your Student is safe!");
+				}
+			});
+	}
+	$(document).ready(function () {
+		$('#studtable').DataTable();
+	});
+</script>
+<style>
+	.swal-modal .swal-text {
+		text-align: center;
+	}
+</style>

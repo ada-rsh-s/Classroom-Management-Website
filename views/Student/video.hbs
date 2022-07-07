@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+
+    <!-- META ============================================= -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <meta name="robots" content="" />
+
+    <!-- DESCRIPTION -->
+    <meta name="description" content="EduChamp : Education HTML Template" />
+
+    <!-- OG -->
+    <meta property="og:title" content="EduChamp : Education HTML Template" />
+    <meta property="og:description" content="EduChamp : Education HTML Template" />
+    <meta property="og:image" content="" />
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- FAVICONS ICON ============================================= -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" type="image/x-icon" href="../Studtemplate/assets/images/favicon.png" />
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="stylesheet" type="text/css" href="../Studtemplate/assets/css/assets.css">
+    <link rel="stylesheet" type="text/css" href="../Studtemplate/assets/css/typography.css">
+    <link rel="stylesheet" type="text/css" href="../Studtemplate/assets/css/shortcodes/shortcodes.css">
+    <link rel="stylesheet" type="text/css" href="../Studtemplate/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../Studtemplate/assets/css/color/color-4.css">
+    <link href="../Image enlarge/magicthumb-trial/magicthumb/magicthumb.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body id="bg">
+    <div class="page-wraper">
+        <div class="page-content bg-white">
+            <!-- inner page banner -->
+            <div class="page-banner ovbl-dark"
+                style="background-image:url(../Studtemplate/assets/images/banner/banner3.jpg);">
+                <div class="container">
+                    <div class="page-banner-entry">
+                        <h1 class="text-white">NOTES</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <!-- About Us -->
+                <div class="section-area section-sp1">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 heading-bx left">
+                                <h2 class="title-head">Videos</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-lg-12 col-md-8 col-sm-12">
+                                <div class="row">
+                                    {{#each video}}
+                                    <div class="col-md-6 col-lg-4 col-sm-6 m-b30">
+                                        <div class="cours-bx">
+                                            <div class="action-box">
+                                                <video controls src="../Notes/videos/{{this._id}}.mp4"
+                                                    class="MagicThumb" onended="end('{{this.Date}}')"></video>
+                                            </div>
+                                            <div class="info-bx text-center">
+                                                <h5>{{this.Topic}}</h5>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    {{/each}}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer END ==== -->
+        <button class="back-to-top fa fa-chevron-up"></button>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,347 @@
+<!-- Mirrored from www.multipurposethemes.com/admin/eduadmin-template/front-end/mydashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Nov 2020 08:29:37 GMT -->
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="https://www.multipurposethemes.com/admin/eduadmin-template/images/favicon.ico">
+
+	<title>EduAdmin - Dashboard</title>
+	<link href="../Studtable/style.bundled1cf.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.4/cropper.min.css">
+
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="../Template/css/vendors_css.css">
+
+	<!-- Style-->
+	<link rel="stylesheet" href="../Template/css/style.css">
+
+</head>
+
+<body class="theme-primary">
+	<section style="margin-top: -450px;" class="py-50">
+		<div class="container">
+			<center>
+				<h1 style="font-family: 'Times New Roman', Times, serif;">ANNOUNCEMENTS</h1>
+			</center>
+
+			<div class="row">
+
+				<div class="col-lg-12 col-md-8 mt-3 col-12">
+					<div class="box">
+						<div class="box-body">
+							<div class="tab-content" id="pills-tabContent23">
+								<div class="tab-pane fade show active" id="pills-edit" role="tabpanel"
+									aria-labelledby="pills-edit-tab">
+									<div class="row">
+										<div class="col-12">
+											<form class="form" action="/tutor/announcement" method="POST"
+												enctype="multipart/form-data">
+												<div>
+													<h4 class="box-title text-primary"><i
+															class="ti-user mr-15"></i>ANNOUNCEMENTS</h4>
+													<hr class="my-15">
+													<div class="row">
+														<div class="col-md-12">
+
+															<div class="form-group">
+																<label>Message</label>
+																<input type="text" class="form-control" name="Message"
+																	id="topic" required onchange="buttonValidation()"
+																	required placeholder="Message">
+															</div>
+														</div>
+														<input type="text" name="Date" value="{{date}}" hidden id=""
+															required>
+
+													</div>
+													<div class="row">
+														<div class="col-md-12">
+															<div class="form-group">
+																<label>Description</label>
+																<textarea class="form-control" name="Description"
+																	placeholder="Description" rows="4"
+																	required></textarea>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-12">
+															<div class="form-group">
+																<label>Image</label>
+																<input type="file" class="form-control" id="file-input"
+																	name="file" onchange="return fileValidation()">
+																<input type="text" name="im" id="inp" hidden value="">
+																<div class="box-2">
+																	<div class="result"></div>
+																</div>
+																<!--rightbox-->
+																<div class="box-2 img-result hide">
+																	<!-- result of crop -->
+																	<input type="image" name="file" class="cropped">
+																</div>
+																<div class="box">
+																	<div class="options hide">
+																		<label hidden> Width</label>
+																		<input hidden type="number" class="img-w"
+																			value="300" min="100" max="1200" />
+																	</div>
+																	<!-- save btn -->
+																	<button
+																		class="mt-5 btn btn-success save hide">Crop</button>
+																	<!-- download btn -->
+																	<a hidden href=""
+																		class="btn download hide">Download</a>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-12">
+															<div class="form-group">
+																<label>Document</label>
+																<input type="file" class="form-control" id="pdf"
+																	name="pdf" onchange="return pdfValidation()">
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-12">
+														<div class="form-group">
+															<label>Video</label>
+															<input type="file" class="form-control" id="video"
+																name="video" onchange="return videoValidation()">
+														</div>
+													</div>
+												</div>
+										</div>
+										<div id="progress" style="display: none; height:18px; width: 310px;"
+											class="progress progress-bar-striped active">
+											<progress id="progressBar" value="0" max="100"
+												style="margin-top: -7.5px;  width: 310px;  height: 30px;"></progress>
+										</div>
+										<h4 class="box-title text-primary" id="status"></h4>
+										<p style="font-family:monospace;" id="loaded_n_total"></p>
+										<button id="button" style="display: none;" onclick="uploadFile();showDiv();"
+											type="submit" class="btn btn-success">Upload</button>
+									</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		</div>
+	</section>
+</body>
+<script src="../Template/js/vendors.min.js"></script>
+<script src="../Template/corenav-master/coreNavigation-1.1.3.js"></script>
+<script src="../Template//vendor_components/jquery-ui/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="../socket.io/socket.io.js"></script>
+<script>
+	var socket = io();
+	document.getElementById("button").addEventListener("click", function () {
+		var topic = document.getElementById("topic").value;
+		let type = "Announcement"
+		socket.emit("message", topic, type)
+	})
+
+
+</script>
+<script>
+	let result = document.querySelector('.result'),
+		img_result = document.querySelector('.img-result'),
+		img_w = document.querySelector('.img-w'),
+		img_h = document.querySelector('.img-h'),
+		options = document.querySelector('.options'),
+		save = document.querySelector('.save'),
+		cropped = document.querySelector('.cropped'),
+		dwn = document.querySelector('.download'),
+		upload = document.querySelector('#file-input'),
+		cropper = '';
+
+	// on change show image with crop options
+	upload.addEventListener('change', (e) => {
+		if (e.target.files.length) {
+			// start file reader
+			const reader = new FileReader();
+			reader.onload = (e) => {
+				if (e.target.result) {
+					// create new image
+					let img = document.createElement('img');
+					img.id = 'image';
+					img.src = e.target.result
+					// clean result before
+					result.innerHTML = '';
+					// append new image
+					result.appendChild(img);
+					// show save btn and options
+					save.classList.remove('hide');
+					options.classList.remove('hide');
+					// init cropper
+					cropper = new Cropper(img);
+				}
+			};
+			reader.readAsDataURL(e.target.files[0]);
+		}
+	});
+
+	// save on click
+	save.addEventListener('click', (e) => {
+		e.preventDefault();
+		// get result to data uri
+		let imgSrc = cropper.getCroppedCanvas({
+			width: img_w.value // input value
+		}).toDataURL();
+		// remove hide class of img
+		cropped.classList.remove('hide');
+		img_result.classList.remove('hide');
+		// show image cropped
+		cropped.src = imgSrc;
+		document.getElementById("inp").value = imgSrc
+		dwn.classList.remove('hide');
+		dwn.download = 'imagename.jpg';
+		dwn.setAttribute('href', imgSrc);
+	});
+
+
+	function fileValidation() {
+		var fileInput =
+			document.getElementById('file-input');
+
+		var filePath = fileInput.value;
+		var allowedExtensions =
+			/(\.jpg)$/i;
+
+		if (!allowedExtensions.exec(filePath)) {
+			swal("Error!", "Upload JPG Photos only", "error");
+			fileInput.value = '';
+			return false;
+		} else {
+			if (document.getElementById('topic').value == "" && document.getElementById('pdf').value == "" && document.getElementById('video').value == "") {
+				console.log("hy")
+			} else {
+				document.getElementById('button').style.display = "block";
+				document.getElementById('button').style.float = "right";
+			}
+		}
+	}
+	function pdfValidation() {
+		var fileInput =
+			document.getElementById('pdf');
+
+		var filePath = fileInput.value;
+		var allowedExtensions =
+			/(\.pdf)$/i;
+
+		if (!allowedExtensions.exec(filePath)) {
+			swal("Error!", "Upload PDF only", "error");
+			fileInput.value = '';
+			return false;
+		} else {
+			if (document.getElementById('topic').value == "" && document.getElementById('pdf').value == "" && document.getElementById('video').value == "") {
+				console.log("hy")
+			} else {
+				document.getElementById('button').style.display = "block";
+				document.getElementById('button').style.float = "right";
+			}
+		}
+	}
+	function videoValidation() {
+		var fileInput =
+			document.getElementById('video');
+
+		var filePath = fileInput.value;
+		var allowedExtensions =
+			/(\.mp4)$/i;
+
+		if (!allowedExtensions.exec(filePath)) {
+			swal("Error!", "Upload Videos only", "error");
+			fileInput.value = '';
+			return false;
+		} else {
+			if (document.getElementById('topic').value == "" && document.getElementById('pdf').value == "" && document.getElementById('video').value == "") {
+				console.log("hy")
+			} else {
+				document.getElementById('button').style.display = "block";
+				document.getElementById('button').style.float = "right";
+			}
+		}
+	}
+
+	function buttonValidation() {
+		var fileInput =
+			document.getElementById('file-input');
+
+		var filePath = fileInput.value;
+		var allowedExtensions =
+			/(\.jpg)$/i;
+
+		if (!allowedExtensions.exec(filePath)) {
+			fileInput.value = '';
+			return false;
+		} else {
+			if (document.getElementById('topic').value == "" && document.getElementById('pdf').value == "") {
+				console.log("hy")
+			} else {
+				document.getElementById('button').style.display = "block";
+				document.getElementById('button').style.float = "right";
+			}
+		}
+	}
+
+	function showDiv() {
+		document.getElementById('progress').style.display = "block";
+	}
+	function _(el) {
+		return document.getElementById(el);
+	}
+
+	function uploadFile() {
+		var file = _("file-input").files[0];
+		var file2 = _("pdf").files[0];
+		var file3 = _("video").files[0];
+		// alert(file.name+" | "+file.size+" | "+file.type);
+		var formdata = new FormData();
+		formdata.append("file-input", file);
+		formdata.append("pdf", file2);
+		formdata.append("video", file3);
+		var ajax = new XMLHttpRequest();
+		ajax.upload.addEventListener("progress", progressHandler, false);
+		ajax.addEventListener("load", completeHandler, false);
+		ajax.addEventListener("error", errorHandler, false);
+		ajax.addEventListener("abort", abortHandler, false);
+		ajax.open("POST", "/tutor/test"); // http://www.developphp.com/video/JavaScript/File-Upload-Progress-Bar-Meter-Tutorial-Ajax-PHP
+		//use file_upload_parser.php from above url
+		ajax.send(formdata);
+	}
+
+	function progressHandler(event) {
+		_("loaded_n_total").innerHTML = "Uploaded " + event.loaded + " bytes of " + event.total;
+		var percent = (event.loaded / event.total) * 100;
+		_("progressBar").value = Math.round(percent);
+		_("status").innerHTML = Math.round(percent) + "% uploaded... <br>Please wait.. , Dont do any other operations";
+	}
+
+	function completeHandler(event) {
+		_("status").innerHTML = event.target.responseText;
+		_("progressBar").value = 0; //wil clear progress bar after successful upload
+	}
+
+	function errorHandler(event) {
+		_("status").innerHTML = "Upload Failed";
+	}
+
+	function abortHandler(event) {
+		_("status").innerHTML = "Upload Aborted";
+	}
+</script>

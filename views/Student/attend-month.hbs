@@ -1,0 +1,110 @@
+<head>
+
+	<meta charset="utf-8" />
+	<meta name="description" content="Headers datatables examples" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+	<link href="../Studtable/style.bundled1cf.css" rel="stylesheet" type="text/css" />
+	<link href="../Studtable/style.bundled1cf.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="../Studtemplate/assets/css/style.css">
+
+</head>
+
+<body id="bg">
+	<div class="page-wraper">
+		<div class="page-content">
+			<div class="page-banner ovbl-dark"
+				style="background-image:url(../Studtemplate/assets/images/banner/banner3.jpg);">
+				<div class="container">
+					<div class="page-banner-entry">
+						<h1 class="text-white">ATTENDANCE</h1>
+					</div>
+				</div>
+			</div>
+
+			<div class="d-flex flex-column flex-root">
+
+				<div class="d-flex flex-row flex-column-fluid page">
+
+					<div class="d-flex flex-column flex-row-fluid" id="kt_wrapper">
+
+						<center>
+							<br>
+							<h4>{{date}}</h4>
+						</center>
+
+						<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
+							<div class="d-flex flex-column-fluid">
+								<!--begin::Container-->
+
+								<div class="container">
+
+
+									<div class="card card-custom">
+										<div class="card-body">
+											<!--begin: Datatable-->
+											<table class="table table-bordered table-hover table-checkable "
+												id="kt_datatable">
+												<thead>
+
+													<tr>
+														<th>
+															<center>Date</center>
+														</th>
+														<th>
+															<center>Attendance</center>
+														</th>
+													</tr>
+												</thead>
+												<tbody>
+													{{#each attendance}}
+													<tr>
+														<td>
+															<center>{{this.date}}</center>
+														</td>
+														<td>
+															<center>{{this.status}}</center>
+														</td>
+														<td hidden nowrap="nowrap"></td>
+													</tr>
+													{{/each}}
+												</tbody>
+											</table>
+											<hr>
+											<center><u>
+													<h3>MONTHLY REPORT</h3>
+												</u></center>
+											<center>
+												<div class="mt-5 card card-custom help-block">
+													<p style="font-size: 20px;">Total Days : {{totalDays}}</p>
+												</div>
+											</center>
+											<center>
+												<div class="mt-5 card card-custom help-block">
+													<p style="font-size: 20px;">No of days present : {{days}}</p>
+												</div>
+											</center>
+											<center>
+												<div class="mt-5 card card-custom help-block">
+													<p style="font-size: 20px;">No of days Absent : {{totalabs}}</p>
+												</div>
+											</center>
+											<center>
+												<div class="mt-5 card card-custom help-block">
+													<p style="font-size: 20px;">Percentage : {{percentage}} %</p>
+												</div>
+											</center>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>

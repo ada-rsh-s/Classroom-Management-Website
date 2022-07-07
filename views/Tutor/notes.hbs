@@ -1,0 +1,290 @@
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="https://www.multipurposethemes.com/admin/eduadmin-template/images/favicon.ico">
+
+	<title>EduAdmin - Dashboard</title>
+	<link href="../Studtable/style.bundled1cf.css" rel="stylesheet" type="text/css" />
+
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="../Template/css/vendors_css.css">
+
+	<!-- Style-->
+	<link rel="stylesheet" href="../Template/css/style.css">
+	<link href="/Image enlarge/magicthumb-trial/magicthumb/magicthumb.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body class="theme-primary">
+	<section style="margin-top: -450px;" class="py-50">
+		<div class="container">
+			<center>
+				<h1 style="font-family: 'Times New Roman', Times, serif;">Notes</h1>
+			</center>
+			<div class="row" style="margin-top: 50px;">
+				<div class="col-lg-4 col-md-8 mt-3 col-12">
+					<center>
+						<a href="/tutor/doc"><button
+								style="padding-left: 23px; padding-right: 23px; margin-bottom: 2px;"
+								class="btn btn-success">Add a document</button></a>
+					</center>
+				</div>
+				<div class="col-lg-4 col-md-8 mt-3 col-12">
+					<center>
+						<a href="/tutor/vid"><button style="padding-left: 35px; padding-right: 35px; margin-bottom: 2px"
+								class="btn btn-success">Add a Video</button></a>
+					</center>
+				</div>
+				<div class="col-lg-4 col-md-8 mt-3 col-12">
+					<center><a href="/tutor/uvid"><button class="btn btn-success">Add Youtube Video</button></a>
+					</center>
+				</div>
+			</div>
+
+
+		</div>
+	</section>
+	<div class="d-flex flex-column flex-root">
+		<div class="d-flex flex-row flex-column-fluid page">
+			<div class="d-flex flex-column flex-row-fluid" id="kt_wrapper">
+				<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+					<div class="d-flex flex-column-fluid">
+						<div class="container">
+							<div class="card card-custom">
+								<div class="card-body">
+									<center>
+										<h2
+											style="color: rgb(96, 97, 116); font-family: Verdana, Geneva, Tahoma, sans-serif;">
+											Documents</h2>
+									</center>
+									<table class="table table-bordered table-hover table-checkable " id="kt_datatable">
+										<thead>
+
+											<tr>
+												<th>
+													<center>Date</center>
+												</th>
+												<th>
+													<center>Topic</center>
+												</th>
+												<th>
+													<center>File</center>
+												</th>
+												<th>
+													<center>Delete</center>
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											{{#each doc}}
+											<tr>
+												<td>
+													<center>{{this.Date}}</center>
+												</td>
+												<td>
+													<center>{{this.Topic}}</center>
+												</td>
+												<td> <a href="../Notes/doc/{{this._id}}.pdf ">
+														<center><img style="height: 40px; width: auto;"
+																src="../Notes/open-document.png" alt="W3Schools"
+																width="104" height="142"><br><small>Click to view the
+																file</small></center>
+
+												</td>
+												<td>
+													<center><a style="cursor: pointer;"
+															onclick="docdelconfirm('{{this._id}}')"><img
+																src="../Studtable/trash-9-24.ico" alt="" srcset=""></a>
+													</center>
+												</td>
+												<td hidden nowrap="nowrap"></td>
+											</tr>
+											{{/each}}
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="card card-custom">
+								<center>
+									<h2
+										style="color: rgb(96, 97, 116); font-family: Verdana, Geneva, Tahoma, sans-serif;">
+										Videos</h2>
+								</center>
+
+								<div class="card-body">
+									<!--begin: Datatable-->
+									<table class="table table-bordered table-hover table-checkable " id="kt_datatable">
+										<thead>
+
+											<tr>
+												<th>
+													<center>Date</center>
+												</th>
+												<th>
+													<center>Topic</center>
+												</th>
+												<th>
+													<center>File</center>
+												</th>
+												<th>
+													<center>Delete</center>
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											{{#each video}}
+											<tr>
+												<td>
+													<center>{{this.Date}}</center>
+												</td>
+												<td>
+													<center>{{this.Topic}}</center>
+												</td>
+												</td>
+												<td>
+													<center><a href="../Notes/videos/{{this._id}}.mp4"
+															data-thumb-id="hello" class="MagicThumb"><img
+																style="height: 80px; width: auto;"
+																src="../Image enlarge/images.png" /></a></center>
+												</td>
+
+												<td>
+													<center><a style="cursor: pointer;"
+															onclick="viddelconfirm('{{this._id}}')"><img
+																src="../Studtable/trash-9-24.ico" alt="" srcset=""></a>
+													</center>
+												</td>
+												<td hidden nowrap="nowrap"></td>
+											</tr>
+											{{/each}}
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="card card-custom">
+								<center>
+									<h2
+										style="color: rgb(96, 97, 116); font-family: Verdana, Geneva, Tahoma, sans-serif;">
+										Youtube</h2>
+								</center>
+								<div class="card-body">
+									<!--begin: Datatable-->
+									<table class="table table-bordered table-hover table-checkable " id="kt_datatable">
+										<thead>
+
+											<tr>
+												<th>
+													<center>Date</center>
+												</th>
+												<th>
+													<center>Topic</center>
+												</th>
+												<th>
+													<center>Link</center>
+												</th>
+												<th>
+													<center>Delete</center>
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											{{#each uvideo}}
+											<tr>
+												<td>
+													<center>{{this.Date}}</center>
+												</td>
+												<td>
+													<center>{{this.Topic}}</center>
+												</td>
+												<td>
+													<center><a href="{{this.Youtube}}" data-thumb-id="hello"
+															class="MagicThumb"><img style="height: 80px; width: auto;"
+																src="../Image enlarge/images.png" /></a></center>
+												</td>
+												<td>
+													<center><a style="cursor: pointer;"
+															onclick="youdelconfirm('{{this._id}}')">
+															<img src="../Studtable/trash-9-24.ico" alt="" srcset=""></a>
+													</center>
+												</td>
+												<td hidden nowrap="nowrap"></td>
+											</tr>
+											{{/each}}
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../Template/js/vendors.min.js"></script>
+<script src="../Template/corenav-master/coreNavigation-1.1.3.js"></script>
+<script src="../Template//vendor_components/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/Image enlarge/magicthumb-trial/magicthumb/magicthumb.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+	function docdelconfirm(studid) {
+		swal({
+			title: "Are you sure?",
+			text: "Once deleted, you will not be able to recover this Document!",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+		})
+			.then((willDelete) => {
+				if (willDelete) {
+					window.location = "/tutor/notesdocdelete/" + studid
+				} else {
+					swal("Your Document is safe!");
+				}
+			});
+	}
+
+	function viddelconfirm(studid) {
+		swal({
+			title: "Are you sure?",
+			text: "Once deleted, you will not be able to recover this Video!",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+		})
+			.then((willDelete) => {
+				if (willDelete) {
+					window.location = "/tutor/notesviddelete/" + studid
+				} else {
+					swal("Your Video is safe!");
+				}
+			});
+	}
+
+	function youdelconfirm(studid) {
+		swal({
+			title: "Are you sure?",
+			text: "Once deleted, you will not be able to recover this youtube link!",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+		})
+			.then((willDelete) => {
+				if (willDelete) {
+					window.location = "/tutor/notesyoudelete/" + studid
+				} else {
+					swal("Your youtube link is safe!");
+				}
+			});
+	}
+</script>
+<style>
+	.swal-modal .swal-text {
+		text-align: center;
+	}
+</style>

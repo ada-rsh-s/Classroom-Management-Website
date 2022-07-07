@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+
+    <!-- META ============================================= -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <meta name="robots" content="" />
+
+    <!-- DESCRIPTION -->
+    <meta name="description" content="EduChamp : Education HTML Template" />
+
+    <!-- OG -->
+    <meta property="og:title" content="EduChamp : Education HTML Template" />
+    <meta property="og:description" content="EduChamp : Education HTML Template" />
+    <meta property="og:image" content="" />
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- FAVICONS ICON ============================================= -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" type="image/x-icon" href="../Studtemplate/assets/images/favicon.png" />
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="stylesheet" type="text/css" href="../Studtemplate/assets/css/assets.css">
+    <link rel="stylesheet" type="text/css" href="../Studtemplate/assets/css/typography.css">
+    <link rel="stylesheet" type="text/css" href="../Studtemplate/assets/css/shortcodes/shortcodes.css">
+    <link rel="stylesheet" type="text/css" href="../Studtemplate/assets/css/style.css">
+    <link class="skin" rel="stylesheet" type="text/css" href="../Studtemplate/assets/css/color/color-4.css">
+    <link href="../Image enlarge/magicthumb-trial/magicthumb/magicthumb.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body id="bg">
+    <div class="page-wraper">
+        <div class="page-content bg-white">
+            <!-- inner page banner -->
+            <div class="page-banner ovbl-dark"
+                style="background-image:url(../Studtemplate/assets/images/banner/banner3.jpg);">
+                <div class="container">
+                    <div class="page-banner-entry">
+                        <h1 class="text-white">TODAYS'S TASK</h1>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="content-block">
+                <!-- About Us -->
+                <div style="padding-bottom: 0px;" class="section-area section-sp1">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 heading-bx left">
+                                <h2 class="title-head">Documents</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-lg-12 col-md-8 col-sm-12">
+                                <div class="row">
+                                    {{#each doc}}
+
+                                    <div class="col-md-6 col-lg-4 col-sm-6 m-b30">
+                                        <div class="cours-bx">
+                                            <div class="action-box">
+                                                <a href="../Notes/doc/{{this._id}}.pdf " download>
+                                                    <center><img style="height: 100px; width: auto;"
+                                                            src="../Notes/open-document.png" alt="W3Schools" width="104"
+                                                            height="142"><br><small>Click to download the file</small>
+                                                    </center>
+
+                                            </div>
+                                            <div class="info-bx text-center">
+                                                <h5><a href="#">{{this.Topic}}</a></h5>
+                                                <span>Programming</span>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    {{/each}}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 heading-bx left">
+                        <h2 class="title-head">Youtube Videos</h2>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-12 col-md-8 col-sm-12">
+                        <div class="row">
+                            {{#each uvideo}}
+
+                            <div class="col-md-6 col-lg-4 col-sm-6 m-b30">
+                                <div class="cours-bx">
+                                    <div class="action-box">
+                                        <a href="{{this.Youtube}}" class="MagicThumb"></a>
+                                    </div>
+                                    <div class="info-bx text-center">
+                                        <h5>{{this.Topic}}</h5>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            {{/each}}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 heading-bx left">
+                        <h2 class="title-head">Videos</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-8 col-sm-12">
+                        <div class="row">
+                            {{#each video}}
+                            <div class="col-md-6 col-lg-4 col-sm-6 m-b30">
+                                <div class="cours-bx">
+                                    <div class="action-box">
+                                        <video controls src="../Notes/videos/{{this._id}}.mp4" class="MagicThumb"
+                                            onended="end('{{this.Date}}')"></video>
+                                    </div>
+                                    <div class="info-bx text-center">
+                                        <h5>{{this.Topic}}</h5>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            {{/each}}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 heading-bx left">
+                        <h2 class="title-head">Assignments</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-8 col-sm-12">
+                        <div class="row">
+                            {{#each assignments}}
+                            <div class="col-md-6 col-lg-4 col-sm-6 m-b30">
+                                <div class="cours-bx">
+                                    <div class="action-box">
+                                        <a href="../Assignments/{{this._id}}.pdf ">
+                                            <center><img style="height: 100px; width: auto;"
+                                                    src="../Notes/open-document.png" alt="W3Schools" width="104"
+                                                    height="142"><br><small>Click to download the file</small></center>
+                                        </a>
+                                    </div>
+                                    <div class="info-bx text-center">
+                                        <h5>{{this.Topic.Topic}}</h5>
+                                    </div>
+                                </div>
+
+                            </div>
+                            {{/each}}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="back-to-top fa fa-chevron-up"></button>
+    </div>
+    <!-- External JavaScripts -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript" src="../Image enlarge/magicthumb-trial/magicthumb/magicthumb.js"></script>
+    <style>
+        .myVideo:hover {
+            cursor: default;
+        }
+    </style>
+    <script>
+        function end(date) {
+            $.ajax({
+                url: '/attendvideo',
+                data: {
+                    Date: date
+                },
+                method: 'post',
+                success: (response) => {
+                    if (response[0].status == "Present" && date == response[0].attendate) {
+                        let date =
+                            ("0" + new Date().getDate()).slice(-2) +
+                            "-" +
+                            ("0" + (new Date().getMonth() + 1)).slice(-2) +
+                            "-" +
+                            new Date().getFullYear();
+                        swal("Attendance recorded", date + " : PRESENT", "success");
+                    } else {
+                        console.log("hi")
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

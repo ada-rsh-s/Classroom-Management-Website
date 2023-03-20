@@ -518,6 +518,7 @@ router.get("/uvid", tutorLogin, (req, res) => {
   res.render("Tutor/Utubevid", { tutor: true, date });
 });
 router.post("/uvid", (req, res) => {
+  console.log(req.body);
   tutorHelpers.uvidNotes(req.body).then((response) => {
     res.redirect("/tutor/notes");
   });

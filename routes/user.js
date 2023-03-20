@@ -607,7 +607,7 @@ router.post("/paytm", studentLogin, [parseUrl, parseJson], (req, res) => {
   params["ORDER_ID"] = paymentDetails.eventId + new Date().getMilliseconds();
   params["CUST_ID"] = paymentDetails.studId;
   params["TXN_AMOUNT"] = paymentDetails.amount;
-  params["CALLBACK_URL"] = "https://eclass-room.herokuapp.com/callback";
+  params["CALLBACK_URL"] = "http://localhost:3000/callback";
   params["EMAIL"] = "";
   params["MOBILE_NO"] = "";
 
@@ -663,8 +663,8 @@ router.post("/paypal", studentLogin, (req, res) => {
       payment_method: "paypal",
     },
     redirect_urls: {
-      return_url: "https://eclass-room.herokuapp.com/paypalsuccess",
-      cancel_url: "https://eclass-room.herokuapp.com/failed",
+      return_url: "http://localhost:3000/paypalsuccess",
+      cancel_url: "http://localhost:3000/failed",
     },
     transactions: [
       {

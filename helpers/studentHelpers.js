@@ -315,7 +315,7 @@ module.exports = {
       "-" +
       ("0" + (new Date().getMonth() + 1)).slice(-2) +
       "-" +
-      new Date().getFullYear();
+      new Date().getFullYear(); 
     return new Promise(async (resolve, reject) => {
       if (!new Date().getDay() == 0) {
         if (date.Date == datecheck) {

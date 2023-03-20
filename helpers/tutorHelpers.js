@@ -279,13 +279,15 @@ module.exports = {
         callback(data.insertedId);
       });
   },
-  uvidNotes: async (notes, callback) => {
-    db.get()
-      .collection(collection.NOTES_U_VID_COLLECTION)
-      .insertOne(notes)
-      .then((data) => {
-        callback(data.insertedId);
-      });
+  uvidNotes: async (notes) => {
+    return new Promise((resolve, reject) => {
+      db.get()
+        .collection(collection.NOTES_U_VID_COLLECTION)
+        .insertOne(notes)
+        .then((data) => {
+          resolve(data.insertedId);
+        });
+    })
   },
   addAssign: (topic) => {
     let assignmentObj = {

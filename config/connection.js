@@ -1,18 +1,15 @@
-const mongoClient = require("mongodb").MongoClient;
-const state = {
-  db: null,
-};
-module.exports.connect = function (done) {
-  const url = "mongodb+srv://adarsh:adarsh@cluster1.6iztrde.mongodb.net/test";
-  const dbname = "classroom";
-  mongoClient.connect(url,  (err, data) => {
-    if (err) return done(err);
-    state.db = data.db(dbname);
-  });
+const { MongoClient } = require("mongodb");
+var db = null;
+const url =
+  "mongodb+srv://adarsh:adarsh@cluster1.6iztrde.mongodb.net/?retryWrites=true&w=majority";
+const client = new MongoClient(url);
 
-  done();
-};
- 
-module.exports.get = function () {
-  return state.db;
-};
+const dbName = "classroom";
+
+module.exports.main= function() {
+   client.connect();
+  console.log("Connected successfully to server");
+  db = client.db(dbName);
+  // const collection = db.collection("documents");
+  return db;
+}

@@ -12,7 +12,9 @@ var hbs = require("express-handlebars");
 var app = express("express-session");
 const server = http.createServer(app);
 var io = require("socket.io")(server);
+var db = require("./config/connection");
 const collection = require("./config/collections");
+
 io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     console.log("Connection Closed");
@@ -37,7 +39,7 @@ io.on("connection", (socket) => {
       type: type,
       Date: date,
     };
-    db.get().collection(collection.NOTI_COLLECTION).insertOne(objtopi);
+    db.main().collection(collection.NOTI_COLLECTION).insertOne(objtopi);
     io.emit("topicassign", topic, type, date);
   });
 
@@ -72,7 +74,6 @@ io.on("connection", (socket) => {
 });
 
 var fileUpload = require("express-fileupload");
-var db = require("./config/connection");
 var session = require("express-session");
 const { ObjectId } = require("mongodb");
 // view engine setup
@@ -95,10 +96,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(fileUpload());
 app.use(session({ secret: "Key", cookie: { maxAge: 3600000 } }));
 app.set("socketio", io);
-db.connect((err) => {
-  if (err) console.log("connection error" + err);
-  else console.log("--------Database Connected--------");
-});
+
 
 app.use("/", usersRouter);
 app.use("/tutor", tutorRouter);

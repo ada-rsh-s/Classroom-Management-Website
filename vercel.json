@@ -1,6 +1,6 @@
 {
   "version": 2,
   "name": "e-classroom",
-  "builds": [{ "src": "app.js", "use": "@vercel/node" }],
+  "builds": [{ "src": "www.js", "use": "@vercel/node" }],
   "routes": [{ "src": "/(.*)", "dest": "/app.js" }]
 }

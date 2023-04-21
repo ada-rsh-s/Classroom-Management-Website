@@ -1,8 +1,6 @@
 var db = require("../config/connection");
 var collection = require("../config/collections");
-const { response } = require("express");
 const bcrypt = require("bcrypt");
-const { log } = require("handlebars");
 var ObjectId = require("mongodb").ObjectId;
 
 module.exports = {
@@ -19,7 +17,6 @@ module.exports = {
   },
   tutorCheck: () => {
     return new Promise(async (resolve, reject) => {
-      console.log(db.get());
       db.get()
         .collection(collection.TUTOR_COLLECTION)
         .findOne({ Status: "inserted" })

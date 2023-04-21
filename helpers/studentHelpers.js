@@ -190,92 +190,91 @@ module.exports = {
         ("0" + (new Date().getMonth() + 1)).slice(-2) +
         "-" +
         new Date().getFullYear();
-  
-        let dateexist = await db
-            .main()
-          .collection(collection.ATTENDANCE_COLLECTION)
-          .findOne({ "attendance.date": datecheck });
-        if (dateexist) {
-          console.log("");
+
+      let dateexist = await db
+        .main()
+        .collection(collection.ATTENDANCE_COLLECTION)
+        .findOne({ "attendance.date": datecheck });
+      if (dateexist) {
+        console.log("");
+      } else {
+        let studattend;
+        let attendDetailObj;
+        if (new Date().getDay() == 0) {
+          attendObj = {
+            date:
+              ("0" + new Date().getDate()).slice(-2) +
+              "-" +
+              ("0" + (new Date().getMonth() + 1)).slice(-2) +
+              "-" +
+              new Date().getFullYear(),
+            month:
+              ("0" + (new Date().getMonth() + 1)).slice(-2) +
+              "-" +
+              new Date().getFullYear(),
+            status: "Holiday",
+          };
         } else {
-          let studattend;
-          let attendDetailObj;
-          if (new Date().getDay() == 0) {
-            attendObj = {
-              date:
-                ("0" + new Date().getDate()).slice(-2) +
-                "-" +
-                ("0" + (new Date().getMonth() + 1)).slice(-2) +
-                "-" +
-                new Date().getFullYear(),
-              month:
-                ("0" + (new Date().getMonth() + 1)).slice(-2) +
-                "-" +
-                new Date().getFullYear(),
-              status: "Holiday",
-            };
-          } else {
-            attendObj = {
-              date:
-                ("0" + new Date().getDate()).slice(-2) +
-                "-" +
-                ("0" + (new Date().getMonth() + 1)).slice(-2) +
-                "-" +
-                new Date().getFullYear(),
-              month:
-                ("0" + (new Date().getMonth() + 1)).slice(-2) +
-                "-" +
-                new Date().getFullYear(),
-              status: "Absent",
-              percentage: 0,
-            };
-          }
-          let userfind = await db
-            .main()
-            .collection(collection.STUDENT_COLLECTION)
-            .aggregate([
-              {
-                $project: {
-                  _id: "$_id",
-                },
+          attendObj = {
+            date:
+              ("0" + new Date().getDate()).slice(-2) +
+              "-" +
+              ("0" + (new Date().getMonth() + 1)).slice(-2) +
+              "-" +
+              new Date().getFullYear(),
+            month:
+              ("0" + (new Date().getMonth() + 1)).slice(-2) +
+              "-" +
+              new Date().getFullYear(),
+            status: "Absent",
+            percentage: 0,
+          };
+        }
+        let userfind = await db
+          .main()
+          .collection(collection.STUDENT_COLLECTION)
+          .aggregate([
+            {
+              $project: {
+                _id: "$_id",
               },
-            ])
-            .toArray();
-          for (var i = 0; i < userfind.length; i++) {
-            studattend = await db
-              .main()
-              .collection(collection.ATTENDANCE_COLLECTION)
-              .findOne({ student: ObjectId(userfind[i]._id) });
-            if (studattend) {
-              let attendExist = studattend.attendance.findIndex(
-                (attendanc) => attendanc.date == attendObj.date
-              );
-              if (attendExist == -1) {
-                db.main()
-                  .collection(collection.ATTENDANCE_COLLECTION)
-                  .updateOne(
-                    { student: ObjectId(userfind[i]._id) },
-                    {
-                      $push: { attendance: attendObj },
-                    }
-                  )
-                  .then((response) => {
-                    resolve();
-                  });
-              }
-            } else {
-              var id = userfind[i];
-              attendDetailObj = {
-                student: id._id,
-                attendance: [attendObj],
-              };
+            },
+          ])
+          .toArray();
+        for (var i = 0; i < userfind.length; i++) {
+          studattend = await db
+            .main()
+            .collection(collection.ATTENDANCE_COLLECTION)
+            .findOne({ student: ObjectId(userfind[i]._id) });
+          if (studattend) {
+            let attendExist = studattend.attendance.findIndex(
+              (attendanc) => attendanc.date == attendObj.date
+            );
+            if (attendExist == -1) {
               db.main()
                 .collection(collection.ATTENDANCE_COLLECTION)
-                .insertOne(attendDetailObj);
+                .updateOne(
+                  { student: ObjectId(userfind[i]._id) },
+                  {
+                    $push: { attendance: attendObj },
+                  }
+                )
+                .then((response) => {
+                  resolve();
+                });
             }
+          } else {
+            var id = userfind[i];
+            attendDetailObj = {
+              student: id._id,
+              attendance: [attendObj],
+            };
+            db.main()
+              .collection(collection.ATTENDANCE_COLLECTION)
+              .insertOne(attendDetailObj);
           }
         }
-    
+      }
     });
   },
   attendhome: (studId) => {
@@ -317,7 +316,7 @@ module.exports = {
       "-" +
       ("0" + (new Date().getMonth() + 1)).slice(-2) +
       "-" +
-      new Date().getFullYear(); 
+      new Date().getFullYear();
     return new Promise(async (resolve, reject) => {
       if (!new Date().getDay() == 0) {
         if (date.Date == datecheck) {
@@ -958,7 +957,6 @@ module.exports = {
     });
   },
   getPvtChat: (studId, chatId) => {
-
     return new Promise((resolve, reject) => {
       db.main()
         .collection(collection.PVT_CHAT_COLLECTION)
@@ -1022,12 +1020,15 @@ module.exports = {
         });
     });
   },
-  findPvtChat:(studId)=>{
-    return new Promise((resolve,reject)=>{
-      db.main().collection(collection.STUDENT_COLLECTION).findOne({_id:ObjectId(studId)}).then((response)=>{
-        resolve(response)
-      })
-    })
+  findPvtChat: (studId) => {
+    return new Promise((resolve, reject) => {
+      db.main()
+        .collection(collection.STUDENT_COLLECTION)
+        .findOne({ _id: ObjectId(studId) })
+        .then((response) => {
+          resolve(response);
+        });
+    });
   },
   getAllStudentsChat: (studId) => {
     return new Promise(async (resolve, reject) => {
@@ -1037,13 +1038,13 @@ module.exports = {
         .find()
         .sort({ Rollno: 1 })
         .toArray();
-        for(var i=0;i<students.length;i++){
-          if(students[i]._id==studId){
-            students.splice(i, i);
-            break;
-          }
+      for (var i = 0; i < students.length; i++) {
+        if (students[i]._id == studId) {
+          students.splice(i, i);
+          break;
         }
+      }
       resolve(students);
     });
-  }
+  },
 };

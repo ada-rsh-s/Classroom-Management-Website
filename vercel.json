@@ -1,7 +1,16 @@
 {
   "version": 2,
-  "name": "e-classroom",
-  "builds": [{ "src": "./bin/www", "use": "@vercel/node" }],
-  "routes": [{ "src": "/(.*)", "dest": "/bin/www" }]
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@now/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      
+      "dest": "index.js"
+    }
+  ]
 }
- 

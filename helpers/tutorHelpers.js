@@ -7,7 +7,7 @@ module.exports = {
   tutorRegister: (tutor) => {
     return new Promise(async (resolve, reject) => {
       tutor.Password = await bcrypt.hash(tutor.Password, 10);
-      db.main()
+      db.get()
         .collection(collection.TUTOR_COLLECTION)
         .insertOne(tutor)
         .then((tutor) => {
@@ -17,7 +17,7 @@ module.exports = {
   },
   tutorCheck: () => {
     return new Promise(async (resolve, reject) => {
-      db.main()
+      db.get()
         .collection(collection.TUTOR_COLLECTION)
         .findOne({ Status: "inserted" })
         .then((response) => {
@@ -29,7 +29,7 @@ module.exports = {
     let response = {};
     return new Promise(async (resolve, reject) => {
       let tutor = await db
-        .main()
+        .get()
         .collection(collection.TUTOR_COLLECTION)
         .findOne({ Email: tutorData.Email });
       if (tutor) {
@@ -52,13 +52,13 @@ module.exports = {
       student.Rollno = parseInt(student.Rollno);
       student.Password = await bcrypt.hash(student.Password, 10);
       let rollno = await db
-        .main()
+        .get()
         .collection(collection.STUDENT_COLLECTION)
         .findOne({ Rollno: student.Rollno });
       if (rollno) {
         resolve({ status: true });
       } else {
-        db.main()
+        db.get()
           .collection("student")
           .insertOne(student)
           .then((data) => {
@@ -105,11 +105,11 @@ module.exports = {
         attendance: [attendObj],
       };
       let userexist = await db
-        .main()
+        .get()
         .collection(collection.STUDENT_COLLECTION)
         .findOne({ _id: ObjectId(studId) });
       let studattend = await db
-        .main()
+        .get()
         .collection(collection.ATTENDANCE_COLLECTION)
         .findOne({ student: ObjectId(studId) });
       if (userexist) {
@@ -118,7 +118,7 @@ module.exports = {
             (attendanc) => attendanc.date == attendObj.date
           );
           if (attendExist == -1) {
-            db.main()
+            db.get()
               .collection(collection.ATTENDANCE_COLLECTION)
               .updateOne(
                 { student: ObjectId(studId) },
@@ -131,7 +131,7 @@ module.exports = {
               });
           }
         } else {
-          db.main()
+          db.get()
             .collection(collection.ATTENDANCE_COLLECTION)
             .insertOne(attendDetailObj)
             .then((response) => {
@@ -140,7 +140,7 @@ module.exports = {
         }
       }
       let holidays = await db
-        .main()
+        .get()
         .collection(collection.HOLIDAY_COLLECTION)
         .find()
         .toArray();
@@ -151,7 +151,7 @@ module.exports = {
             month: holidays[i].Date.substring(3, 10),
             status: "Holiday",
           };
-          db.main()
+          db.get()
             .collection(collection.ATTENDANCE_COLLECTION)
             .updateOne(
               { student: ObjectId(studId) },
@@ -166,7 +166,7 @@ module.exports = {
   getAllStudents: () => {
     return new Promise(async (resolve, reject) => {
       let students = await db
-        .main()
+        .get()
         .collection(collection.STUDENT_COLLECTION)
         .find()
         .sort({ Rollno: 1 })
@@ -176,7 +176,7 @@ module.exports = {
   },
   getStudentDetails: (studId) => {
     return new Promise((resolve, reject) => {
-      db.main()
+      db.get()
         .collection(collection.STUDENT_COLLECTION)
         .findOne({ _id: ObjectId(studId) })
         .then((student) => {
@@ -186,7 +186,7 @@ module.exports = {
   },
   updateStudDetails: (studId, studDetails) => {
     return new Promise((resolve, reject) => {
-      db.main()
+      db.get()
         .collection(collection.STUDENT_COLLECTION)
         .updateOne(
           { _id: ObjectId(studId) },
@@ -209,10 +209,10 @@ module.exports = {
   },
   deleteStudent: (studId) => {
     return new Promise((resolve, reject) => {
-      db.main()
+      db.get()
         .collection(collection.ATTENDANCE_COLLECTION)
         .deleteOne({ student: ObjectId(studId) });  
-      db.main()
+      db.get()
         .collection(collection.STUDENT_COLLECTION)
         .deleteOne({ _id: ObjectId(studId) })
         .then((response) => {
@@ -221,7 +221,7 @@ module.exports = {
     });
   },
   tutorProfile: (tutor, callback) => {
-    db.main()
+    db.get()
       .collection(collection.TUTOR_COLLECTION)
       .insertOne(tutor)
       .then((data) => {
@@ -231,7 +231,7 @@ module.exports = {
   tutorProfileDetails: () => {
     return new Promise(async (resolve, reject) => {
       let teacher = await db
-        .main()
+        .get()
         .collection(collection.TUTOR_COLLECTION)
         .findOne();
       resolve(teacher);
@@ -239,7 +239,7 @@ module.exports = {
   },
   updateTutDetails: (tutId, tutDetails) => {
     return new Promise((resolve, reject) => {
-      db.main()
+      db.get()
         .collection(collection.TUTOR_COLLECTION)
         .updateOne(
           { _id: ObjectId(tutId) },
@@ -261,7 +261,7 @@ module.exports = {
     });
   },
   docNotes: async (notes, callback) => {
-    db.main()
+    db.get()
       .collection(collection.NOTES_DOC_COLLECTION)
       .insertOne(notes)
       .then((data) => {
@@ -269,7 +269,7 @@ module.exports = {
       });
   },
   vidNotes: async (notes, callback) => {
-    db.main()
+    db.get()
       .collection(collection.NOTES_VID_COLLECTION)
       .insertOne(notes)
       .then((data) => {
@@ -278,7 +278,7 @@ module.exports = {
   },
   uvidNotes: async (notes) => {
     return new Promise((resolve, reject) => {
-      db.main()
+      db.get()
         .collection(collection.NOTES_U_VID_COLLECTION)
         .insertOne(notes)
         .then((data) => {
@@ -292,7 +292,7 @@ module.exports = {
       assignments: [],
     };
     return new Promise((resolve, reject) => {
-      db.main()
+      db.get()
         .collection(collection.ASSIGNMENT_COLLECTION)
         .insertOne(assignmentObj)
         .then((response) => {
@@ -303,7 +303,7 @@ module.exports = {
   viewAssign: () => {
     return new Promise(async (resolve, reject) => {
       let assign = await db
-        .main()
+        .get()
         .collection(collection.ASSIGNMENT_COLLECTION)
         .find()
         .sort({ _id: -1 })
@@ -313,7 +313,7 @@ module.exports = {
   },
   deleteAssign: (assignId) => {
     return new Promise((resolve, reject) => {
-      db.main()
+      db.get()
         .collection(collection.ASSIGNMENT_COLLECTION)
         .deleteOne({ _id: ObjectId(assignId) })
         .then((response) => {
@@ -324,7 +324,7 @@ module.exports = {
   getAssignments: (studId) => {
     return new Promise(async (resolve, reject) => {
       let assignments = await db
-        .main()
+        .get()
         .collection(collection.ASSIGNMENT_COLLECTION)
         .aggregate([
           {
@@ -356,12 +356,12 @@ module.exports = {
       new Date().getFullYear();
     return new Promise(async (resolve, reject) => {
       let studattend = await db
-        .main()
+        .get()
         .collection(collection.ATTENDANCE_COLLECTION)
         .findOne({ student: ObjectId(studId) });
       if (studattend) {
         await db
-          .main()
+          .get()
           .collection(collection.ATTENDANCE_COLLECTION)
           .updateOne(
             { student: ObjectId(studId), "attendance.date": datecheck },
@@ -387,7 +387,7 @@ module.exports = {
         "-" +
         new Date().getFullYear();
       let attend = await db
-        .main()
+        .get()
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
@@ -421,7 +421,7 @@ module.exports = {
         "-" +
         new Date().getFullYear();
       let attend = await db
-        .main()
+        .get()
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
@@ -454,7 +454,7 @@ module.exports = {
   getAttendDate: (date) => {
     return new Promise(async (resolve, reject) => {
       let attend = await db
-        .main()
+        .get()
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
@@ -484,7 +484,7 @@ module.exports = {
     });
   },
   addAnnouncement: async (announce, callback) => {
-    db.main()
+    db.get()
       .collection(collection.ANNOUNCEMENT_COLLECTION)
       .insertOne(announce)
       .then((data) => {
@@ -494,7 +494,7 @@ module.exports = {
   getAnnouncements: () => {
     return new Promise(async (resolve, reject) => {
       let announcement = await db
-        .main()
+        .get()
         .collection(collection.ANNOUNCEMENT_COLLECTION)
         .find()
         .sort({ _id: -1 })
@@ -505,7 +505,7 @@ module.exports = {
   getEvents: () => {
     return new Promise(async (resolve, reject) => {
       let event = await db
-        .main()
+        .get()
         .collection(collection.EVENT_COLLECTION)
         .find()
         .sort({ _id: -1 })
@@ -514,7 +514,7 @@ module.exports = {
     });
   },
   addEvent: async (event, callback) => {
-    db.main()
+    db.get()
       .collection(collection.EVENT_COLLECTION)
       .insertOne(event)
       .then((data) => {
@@ -524,7 +524,7 @@ module.exports = {
   getEventDetails: (eventId) => {
     return new Promise(async (resolve, reject) => {
       await db
-        .main()
+        .get()
         .collection(collection.EVENT_COLLECTION)
         .findOne({ _id: ObjectId(eventId) })
         .then((response) => {
@@ -533,7 +533,7 @@ module.exports = {
     });
   },
   addPhotos: async (photo, callback) => {
-    db.main()
+    db.get()
       .collection(collection.PHOTO_COLLECTION)
       .insertOne(photo)
       .then((data) => {
@@ -542,7 +542,7 @@ module.exports = {
   },
   deletePhoto: (photoId) => {
     return new Promise((resolve, reject) => {
-      db.main()
+      db.get()
         .collection(collection.PHOTO_COLLECTION)
         .deleteOne({ _id: ObjectId(photoId) })
         .then((response) => {
@@ -552,7 +552,7 @@ module.exports = {
   },
   deleteAnnounce: (announceId) => {
     return new Promise((resolve, reject) => {
-      db.main()
+      db.get()
         .collection(collection.ANNOUNCEMENT_COLLECTION)
         .deleteOne({ _id: ObjectId(announceId) })
         .then((response) => {
@@ -562,10 +562,10 @@ module.exports = {
   },
   deleteEvent: (eventId) => {
     return new Promise((resolve, reject) => {
-      db.main()
+      db.get()
         .collection(collection.PAID_COLLECTION)
         .deleteOne({ event: ObjectId(eventId) });
-      db.main()
+      db.get()
         .collection(collection.EVENT_COLLECTION)
         .deleteOne({ _id: ObjectId(eventId) })
         .then((response) => {
@@ -575,7 +575,7 @@ module.exports = {
   },
   deleteDoc: (docId) => {
     return new Promise((resolve, reject) => {
-      db.main()
+      db.get()
         .collection(collection.NOTES_DOC_COLLECTION)
         .deleteOne({ _id: ObjectId(docId) })
         .then((response) => {
@@ -585,7 +585,7 @@ module.exports = {
   },
   deleteVid: (vidId) => {
     return new Promise((resolve, reject) => {
-      db.main()
+      db.get()
         .collection(collection.NOTES_VID_COLLECTION)
         .deleteOne({ _id: ObjectId(vidId) })
         .then((response) => {
@@ -595,7 +595,7 @@ module.exports = {
   },
   deleteYou: (youId) => {
     return new Promise((resolve, reject) => {
-      db.main()
+      db.get()
         .collection(collection.NOTES_U_VID_COLLECTION)
         .deleteOne({ _id: ObjectId(youId) })
         .then((response) => {
@@ -606,7 +606,7 @@ module.exports = {
   getPaidStudents: (eventId) => {
     return new Promise(async (resolve, reject) => {
       let paid = await db
-        .main()
+        .get()
         .collection(collection.PAID_COLLECTION)
         .aggregate([
           {
@@ -632,14 +632,14 @@ module.exports = {
   },
   addHoliday: (datecheck, insertdate) => {
     return new Promise(async (resolve, reject) => {
-      db.main().collection(collection.HOLIDAY_COLLECTION).insertOne(insertdate);
+      db.get().collection(collection.HOLIDAY_COLLECTION).insertOne(insertdate);
       let attendObj = {
         date: datecheck,
         month: datecheck.substring(3, 10),
         status: "Holiday",
       };
       let userfind = await db
-        .main()
+        .get()
         .collection(collection.STUDENT_COLLECTION)
         .aggregate([
           {
@@ -650,13 +650,13 @@ module.exports = {
         ])
         .toArray();
       let dateexist = await db
-        .main()
+        .get()
         .collection(collection.ATTENDANCE_COLLECTION)
         .findOne({ "attendance.date": datecheck });
       for (var i = 0; i < userfind.length; i++) {
         if (dateexist) {
           await db
-            .main()
+            .get()
             .collection(collection.ATTENDANCE_COLLECTION)
             .updateOne(
               {
@@ -674,14 +674,14 @@ module.exports = {
         } else {
           if (
             db
-              .main()
+              .get()
               .collection(collection.ATTENDANCE_COLLECTION)
               .findOne({
                 student: ObjectId(userfind[i]._id),
                 "attendance.date": datecheck,
               })
           ) {
-            db.main()
+            db.get()
               .collection(collection.ATTENDANCE_COLLECTION)
               .updateOne(
                 { student: ObjectId(userfind[i]._id) },
@@ -700,7 +700,7 @@ module.exports = {
   subMarks: (mark, assignId, studId) => {
     return new Promise(async (resolve, reject) => {
       await db
-        .main()
+        .get()
         .collection(collection.ASSIGNMENT_COLLECTION)
         .updateOne(
           { _id: ObjectId(assignId), "assignments.student": ObjectId(studId) },
@@ -711,7 +711,7 @@ module.exports = {
   },
   findPvtChat:(tutorId)=>{
     return new Promise((resolve,reject)=>{
-      db.main().collection(collection.TUTOR_COLLECTION).findOne({_id:ObjectId(tutorId)}).then((response)=>{
+      db.get().collection(collection.TUTOR_COLLECTION).findOne({_id:ObjectId(tutorId)}).then((response)=>{
         resolve(response)
       })
     })

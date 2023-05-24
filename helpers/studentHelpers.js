@@ -14,7 +14,7 @@ module.exports = {
     const response = {};
     return new Promise(async (resolve, reject) => {
       const student = await db
-        .main()
+        .get()
         .collection(collection.STUDENT_COLLECTION)
         .findOne({ Username: studentDetails.Username });
       if (student) {
@@ -39,7 +39,7 @@ module.exports = {
       const response = {};
       let status;
       const phone = await db
-        .main()
+        .get()
         .collection(collection.STUDENT_COLLECTION)
         .findOne({ Phone: studentDetails.Phone });
       if (phone) {
@@ -60,7 +60,7 @@ module.exports = {
   userTest: (studId) => {
     return new Promise(async (resolve, reject) => {
       const userexist = await db
-        .main()
+        .get()
         .collection(collection.STUDENT_COLLECTION)
         .findOne({ _id: ObjectId(studId) });
       if (userexist) {
@@ -73,7 +73,7 @@ module.exports = {
   Notes: () => {
     return new Promise(async (resolve, reject) => {
       const doc = await db
-        .main()
+        .get()
         .collection(collection.NOTES_DOC_COLLECTION)
         .find()
         .sort({ _id: -1 })
@@ -84,7 +84,7 @@ module.exports = {
   videoNotes: () => {
     return new Promise(async (resolve, reject) => {
       const video = await db
-        .main()
+        .get()
         .collection(collection.NOTES_VID_COLLECTION)
         .find()
         .sort({ _id: -1 })
@@ -95,7 +95,7 @@ module.exports = {
   utubeNotes: () => {
     return new Promise(async (resolve, reject) => {
       const uvideo = await db
-        .main()
+        .get()
         .collection(collection.NOTES_U_VID_COLLECTION)
         .find()
         .sort({ _id: -1 })
@@ -106,7 +106,7 @@ module.exports = {
   viewAssign: () => {
     return new Promise(async (resolve, reject) => {
       let assign = await db
-        .main()
+        .get()
         .collection(collection.ASSIGNMENT_COLLECTION)
         .find()
         .sort({ _id: -1 })
@@ -117,7 +117,7 @@ module.exports = {
   assignMarks: (studId) => {
     return new Promise(async (resolve, reject) => {
       let assign = await db
-        .main()
+        .get()
         .collection(collection.ASSIGNMENT_COLLECTION)
         .aggregate([
           {
@@ -140,7 +140,7 @@ module.exports = {
   },
   subAssign: (assignId) => {
     return new Promise((resolve, reject) => {
-      db.main()
+      db.get()
         .collection(collection.ASSIGNMENT_COLLECTION)
         .findOne({ _id: ObjectId(assignId) });
       resolve(response);
@@ -155,19 +155,19 @@ module.exports = {
     };
     return new Promise(async (resolve, reject) => {
       let assignmnets = await db
-        .main()
+        .get()
         .collection(collection.ASSIGNMENT_COLLECTION)
         .findOne({ _id: ObjectId(assignId), "assignments.student": id });
       if (
         db
-          .main()
+          .get()
           .collection(collection.ASSIGNMENT_COLLECTION)
           .findOne({ _id: ObjectId(assignId) })
       ) {
         if (assignmnets) {
           resolve({ status: true });
         } else {
-          db.main()
+          db.get()
             .collection(collection.ASSIGNMENT_COLLECTION)
             .updateOne(
               { _id: ObjectId(assignId) },
@@ -192,7 +192,7 @@ module.exports = {
         new Date().getFullYear();
 
       let dateexist = await db
-        .main()
+        .get()
         .collection(collection.ATTENDANCE_COLLECTION)
         .findOne({ "attendance.date": datecheck });
       if (dateexist) {
@@ -231,7 +231,7 @@ module.exports = {
           };
         }
         let userfind = await db
-          .main()
+          .get()
           .collection(collection.STUDENT_COLLECTION)
           .aggregate([
             {
@@ -243,7 +243,7 @@ module.exports = {
           .toArray();
         for (var i = 0; i < userfind.length; i++) {
           studattend = await db
-            .main()
+            .get()
             .collection(collection.ATTENDANCE_COLLECTION)
             .findOne({ student: ObjectId(userfind[i]._id) });
           if (studattend) {
@@ -251,7 +251,7 @@ module.exports = {
               (attendanc) => attendanc.date == attendObj.date
             );
             if (attendExist == -1) {
-              db.main()
+              db.get()
                 .collection(collection.ATTENDANCE_COLLECTION)
                 .updateOne(
                   { student: ObjectId(userfind[i]._id) },
@@ -269,7 +269,7 @@ module.exports = {
               student: id._id,
               attendance: [attendObj],
             };
-            db.main()
+            db.get()
               .collection(collection.ATTENDANCE_COLLECTION)
               .insertOne(attendDetailObj);
           }
@@ -285,7 +285,7 @@ module.exports = {
         ("0" + (new Date().getMonth() + 1)).slice(-2) +
         "-" +
         new Date().getFullYear();
-      db.main()
+      db.get()
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
@@ -321,7 +321,7 @@ module.exports = {
       if (!new Date().getDay() == 0) {
         if (date.Date == datecheck) {
           await db
-            .main()
+            .get()
             .collection(collection.ATTENDANCE_COLLECTION)
             .updateOne(
               { student: ObjectId(studId), "attendance.date": datecheck },
@@ -335,7 +335,7 @@ module.exports = {
         }
       }
       let attend = await db
-        .main()
+        .get()
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
@@ -365,7 +365,7 @@ module.exports = {
         "-" +
         new Date().getFullYear();
       let attend = await db
-        .main()
+        .get()
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
@@ -398,7 +398,7 @@ module.exports = {
         "-" +
         new Date().getFullYear();
       let totalDays = await db
-        .main()
+        .get()
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
@@ -431,7 +431,7 @@ module.exports = {
         "-" +
         new Date().getFullYear();
       let days = await db
-        .main()
+        .get()
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
@@ -464,7 +464,7 @@ module.exports = {
         "-" +
         new Date().getFullYear();
       let days = await db
-        .main()
+        .get()
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
@@ -497,7 +497,7 @@ module.exports = {
         "-" +
         new Date().getFullYear();
       let totalDays = await db
-        .main()
+        .get()
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
@@ -521,7 +521,7 @@ module.exports = {
       }
       let numeratorTotal = 0;
       let numerator = await db
-        .main()
+        .get()
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
@@ -560,7 +560,7 @@ module.exports = {
       let totalOpenDays = 0;
 
       let totalDays = await db
-        .main()
+        .get()
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
@@ -590,7 +590,7 @@ module.exports = {
       let daysPresent = 0;
 
       let days = await db
-        .main()
+        .get()
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
@@ -620,7 +620,7 @@ module.exports = {
       let daysAbsent = 0;
 
       let days = await db
-        .main()
+        .get()
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
@@ -650,7 +650,7 @@ module.exports = {
       let totalOpenDays = 0;
 
       let totalDays = await db
-        .main()
+        .get()
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
@@ -674,7 +674,7 @@ module.exports = {
       }
       let numeratorTotal = 0;
       let numerator = await db
-        .main()
+        .get()
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
@@ -705,7 +705,7 @@ module.exports = {
   getAnnounceDetails: (announceId) => {
     return new Promise(async (resolve, reject) => {
       await db
-        .main()
+        .get()
         .collection(collection.ANNOUNCEMENT_COLLECTION)
         .findOne({ _id: ObjectId(announceId) })
         .then((response) => {
@@ -716,7 +716,7 @@ module.exports = {
   getAttendDate: (date, studId) => {
     return new Promise(async (resolve, reject) => {
       let attend = await db
-        .main()
+        .get()
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
@@ -744,7 +744,7 @@ module.exports = {
   getPhotos: () => {
     return new Promise(async (resolve, reject) => {
       let photo = await db
-        .main()
+        .get()
         .collection(collection.PHOTO_COLLECTION)
         .find()
         .sort({ _id: -1 })
@@ -755,7 +755,7 @@ module.exports = {
   getEventDetails: (eventId) => {
     return new Promise(async (resolve, reject) => {
       await db
-        .main()
+        .get()
         .collection(collection.EVENT_COLLECTION)
         .findOne({ _id: ObjectId(eventId) })
         .then((response) => {
@@ -766,20 +766,20 @@ module.exports = {
   eventBook: (eventId, studId) => {
     return new Promise(async (resolve, reject) => {
       let paidevent = await db
-        .main()
+        .get()
         .collection(collection.EVENT_COLLECTION)
         .findOne({ _id: ObjectId(eventId), Type: "Paid" });
       if (paidevent) {
         if (
           await db
-            .main()
+            .get()
             .collection(collection.EVENT_COLLECTION)
             .findOne({ _id: ObjectId(eventId), students: ObjectId(studId) })
         ) {
           console.log("FOUND________________________");
         } else {
           db
-            .main()
+            .get()
             .collection(collection.EVENT_COLLECTION)
             .updateOne(
               { _id: ObjectId(eventId) },
@@ -823,7 +823,7 @@ module.exports = {
           student: ObjectId(studId),
           event: ObjectId(details["order[receipt]"]),
         };
-        db.main().collection(collection.PAID_COLLECTION).insertOne(paidObj);
+        db.get().collection(collection.PAID_COLLECTION).insertOne(paidObj);
         resolve();
       } else {
         reject();
@@ -836,7 +836,7 @@ module.exports = {
         student: ObjectId(studId),
         event: ObjectId(eventId),
       };
-      db.main().collection(collection.PAID_COLLECTION).insertOne(paidObj);
+      db.get().collection(collection.PAID_COLLECTION).insertOne(paidObj);
       resolve();
     });
   },
@@ -848,7 +848,7 @@ module.exports = {
       "-" +
       new Date().getFullYear();
     return new Promise((resolve, reject) => {
-      db.main()
+      db.get()
         .collection(collection.NOTES_DOC_COLLECTION)
         .find({ Date: datecheck })
         .toArray()
@@ -865,7 +865,7 @@ module.exports = {
       "-" +
       new Date().getFullYear();
     return new Promise((resolve, reject) => {
-      db.main()
+      db.get()
         .collection(collection.NOTES_U_VID_COLLECTION)
         .find({ Date: datecheck })
         .toArray()
@@ -882,7 +882,7 @@ module.exports = {
       "-" +
       new Date().getFullYear();
     return new Promise((resolve, reject) => {
-      db.main()
+      db.get()
         .collection(collection.NOTES_VID_COLLECTION)
         .find({ Date: datecheck })
         .toArray()
@@ -899,7 +899,7 @@ module.exports = {
       "-" +
       new Date().getFullYear();
     return new Promise((resolve, reject) => {
-      db.main()
+      db.get()
         .collection(collection.ASSIGNMENT_COLLECTION)
         .find({ "Topic.Date": datecheck })
         .toArray()
@@ -911,7 +911,7 @@ module.exports = {
   getNotifications: () => {
     return new Promise(async (resolve, reject) => {
       let notifications = await db
-        .main()
+        .get()
         .collection(collection.NOTI_COLLECTION)
         .find()
         .sort({ _id: -1 })
@@ -921,7 +921,7 @@ module.exports = {
   },
   chat: (studName, studId, message, date) => {
     return new Promise((resolve, reject) => {
-      db.main()
+      db.get()
         .collection(collection.CHAT_COLLECTION)
         .insertOne({ name: studName, id: studId, message: message, date: date })
         .then((response) => {
@@ -931,7 +931,7 @@ module.exports = {
   },
   pvtChat: (name, message, chatId, studId) => {
     return new Promise((resolve, reject) => {
-      db.main()
+      db.get()
         .collection(collection.PVT_CHAT_COLLECTION)
         .insertOne({
           name: name,
@@ -946,7 +946,7 @@ module.exports = {
   },
   getChat: () => {
     return new Promise((resolve, reject) => {
-      db.main()
+      db.get()
         .collection(collection.CHAT_COLLECTION)
         .find()
         .sort({ _id: 1 })
@@ -958,7 +958,7 @@ module.exports = {
   },
   getPvtChat: (studId, chatId) => {
     return new Promise((resolve, reject) => {
-      db.main()
+      db.get()
         .collection(collection.PVT_CHAT_COLLECTION)
         .aggregate([
           {
@@ -990,7 +990,7 @@ module.exports = {
         ("0" + (new Date().getMonth() + 1)).slice(-2) +
         "-" +
         new Date().getFullYear();
-      db.main()
+      db.get()
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
@@ -1022,7 +1022,7 @@ module.exports = {
   },
   findPvtChat: (studId) => {
     return new Promise((resolve, reject) => {
-      db.main()
+      db.get()
         .collection(collection.STUDENT_COLLECTION)
         .findOne({ _id: ObjectId(studId) })
         .then((response) => {
@@ -1033,7 +1033,7 @@ module.exports = {
   getAllStudentsChat: (studId) => {
     return new Promise(async (resolve, reject) => {
       let students = await db
-        .main()
+        .get()
         .collection(collection.STUDENT_COLLECTION)
         .find()
         .sort({ Rollno: 1 })

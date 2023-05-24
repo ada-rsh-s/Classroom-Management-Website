@@ -15,6 +15,8 @@ var io = require("socket.io")(server);
 var db = require("./config/connection");
 const collection = require("./config/collections");
 
+db.connect();
+
 io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     console.log("Connection Closed");
@@ -39,7 +41,7 @@ io.on("connection", (socket) => {
       type: type,
       Date: date,
     };
-    db.main().collection(collection.NOTI_COLLECTION).insertOne(objtopi);
+    db.get().collection(collection.NOTI_COLLECTION).insertOne(objtopi);
     io.emit("topicassign", topic, type, date);
   });
 
@@ -95,7 +97,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(fileUpload());
 app.use(session({ secret: "Key", cookie: { maxAge: 3600000 } }));
 app.set("socketio", io);
-
 
 app.use("/", usersRouter);
 app.use("/tutor", tutorRouter);

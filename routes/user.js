@@ -3,8 +3,6 @@ const studentHelpers = require("../helpers/studentHelpers");
 var router = express.Router();
 var request = require("request");
 const tutorHelpers = require("../helpers/tutorHelpers");
-const { response } = require("express");
-const qs = require("querystring");
 const checksum_lib = require("../public/Paytm/checksum");
 const config = require("../public/Paytm/config");
 const paypal = require("paypal-rest-sdk");
@@ -609,11 +607,10 @@ router.post("/paytm", studentLogin, [parseUrl, parseJson], (req, res) => {
   params["TXN_AMOUNT"] = paymentDetails.amount;
   params["CALLBACK_URL"] = "http://localhost:3000/callback";
   params["EMAIL"] = "";
-  params["MOBILE_NO"] = "";
-
+  params["MOBILE_NO"] = ""; 
   checksum_lib.genchecksum(
     params,
-    config.PaytmConfig.key,
+    config.PaytmConfig.key, 
     function (err, checksum) {
       var txn_url = "https://securegw-stage.paytm.in/order/process"; // for staging
 

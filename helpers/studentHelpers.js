@@ -62,7 +62,7 @@ module.exports = {
       const userexist = await db
         .get()
         .collection(collection.STUDENT_COLLECTION)
-        .findOne({ _id: ObjectId(studId) });
+        .findOne({ _id:new  ObjectId(studId) });
       if (userexist) {
         resolve({ status: true });
       } else {
@@ -131,7 +131,7 @@ module.exports = {
             },
           },
           {
-            $match: { student: ObjectId(studId) },
+            $match: { student:new  ObjectId(studId) },
           },
         ])
         .toArray();
@@ -142,13 +142,13 @@ module.exports = {
     return new Promise((resolve, reject) => {
       db.get()
         .collection(collection.ASSIGNMENT_COLLECTION)
-        .findOne({ _id: ObjectId(assignId) });
+        .findOne({ _id:new  ObjectId(assignId) });
       resolve(response);
     });
   },
   submitAssignment: (assignId, student) => {
-    let id = ObjectId(student);
-    let assid = ObjectId();
+    let id =new  ObjectId(student);
+    let assid =new  ObjectId();
     let subassignment = {
       student: id,
       assignment: assid,
@@ -157,12 +157,12 @@ module.exports = {
       let assignmnets = await db
         .get()
         .collection(collection.ASSIGNMENT_COLLECTION)
-        .findOne({ _id: ObjectId(assignId), "assignments.student": id });
+        .findOne({ _id:new  ObjectId(assignId), "assignments.student": id });
       if (
         db
           .get()
           .collection(collection.ASSIGNMENT_COLLECTION)
-          .findOne({ _id: ObjectId(assignId) })
+          .findOne({ _id:new  ObjectId(assignId) })
       ) {
         if (assignmnets) {
           resolve({ status: true });
@@ -170,7 +170,7 @@ module.exports = {
           db.get()
             .collection(collection.ASSIGNMENT_COLLECTION)
             .updateOne(
-              { _id: ObjectId(assignId) },
+              { _id:new  ObjectId(assignId) },
               {
                 $push: { assignments: subassignment },
               }
@@ -245,7 +245,7 @@ module.exports = {
           studattend = await db
             .get()
             .collection(collection.ATTENDANCE_COLLECTION)
-            .findOne({ student: ObjectId(userfind[i]._id) });
+            .findOne({ student:new  ObjectId(userfind[i]._id) });
           if (studattend) {
             let attendExist = studattend.attendance.findIndex(
               (attendanc) => attendanc.date == attendObj.date
@@ -254,7 +254,7 @@ module.exports = {
               db.get()
                 .collection(collection.ATTENDANCE_COLLECTION)
                 .updateOne(
-                  { student: ObjectId(userfind[i]._id) },
+                  { student:new  ObjectId(userfind[i]._id) },
                   {
                     $push: { attendance: attendObj },
                   }
@@ -289,7 +289,7 @@ module.exports = {
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
-            $match: { student: ObjectId(studId) },
+            $match: { student:new  ObjectId(studId) },
           },
           {
             $unwind: "$attendance",
@@ -324,7 +324,7 @@ module.exports = {
             .get()
             .collection(collection.ATTENDANCE_COLLECTION)
             .updateOne(
-              { student: ObjectId(studId), "attendance.date": datecheck },
+              { student:new  ObjectId(studId), "attendance.date": datecheck },
               {
                 $set: {
                   "attendance.$.status": "Present",
@@ -339,7 +339,7 @@ module.exports = {
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
-            $match: { student: ObjectId(studId) },
+            $match: { student:new  ObjectId(studId) },
           },
           {
             $unwind: "$attendance",
@@ -369,7 +369,7 @@ module.exports = {
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
-            $match: { student: ObjectId(studId) },
+            $match: { student:new  ObjectId(studId) },
           },
           {
             $unwind: "$attendance",
@@ -402,7 +402,7 @@ module.exports = {
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
-            $match: { student: ObjectId(studId) },
+            $match: { student:new  ObjectId(studId) },
           },
           {
             $match: { "attendance.month": monthcheck },
@@ -435,7 +435,7 @@ module.exports = {
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
-            $match: { student: ObjectId(studId) },
+            $match: { student:new  ObjectId(studId) },
           },
           {
             $match: { "attendance.month": monthcheck },
@@ -468,7 +468,7 @@ module.exports = {
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
-            $match: { student: ObjectId(studId) },
+            $match: { student:new  ObjectId(studId) },
           },
           {
             $match: { "attendance.month": monthcheck },
@@ -501,7 +501,7 @@ module.exports = {
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
-            $match: { student: ObjectId(studId) },
+            $match: { student:new  ObjectId(studId) },
           },
           {
             $match: { "attendance.month": monthcheck },
@@ -525,7 +525,7 @@ module.exports = {
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
-            $match: { student: ObjectId(studId) },
+            $match: { student:new  ObjectId(studId) },
           },
           {
             $match: { "attendance.month": monthcheck },
@@ -564,7 +564,7 @@ module.exports = {
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
-            $match: { student: ObjectId(studId) },
+            $match: { student:new  ObjectId(studId) },
           },
           {
             $unwind: "$attendance",
@@ -594,7 +594,7 @@ module.exports = {
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
-            $match: { student: ObjectId(studId) },
+            $match: { student:new  ObjectId(studId) },
           },
           {
             $unwind: "$attendance",
@@ -624,7 +624,7 @@ module.exports = {
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
-            $match: { student: ObjectId(studId) },
+            $match: { student:new  ObjectId(studId) },
           },
           {
             $unwind: "$attendance",
@@ -654,7 +654,7 @@ module.exports = {
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
-            $match: { student: ObjectId(studId) },
+            $match: { student:new  ObjectId(studId) },
           },
           {
             $unwind: "$attendance",
@@ -678,7 +678,7 @@ module.exports = {
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
-            $match: { student: ObjectId(studId) },
+            $match: { student:new  ObjectId(studId) },
           },
           {
             $unwind: "$attendance",
@@ -707,7 +707,7 @@ module.exports = {
       await db
         .get()
         .collection(collection.ANNOUNCEMENT_COLLECTION)
-        .findOne({ _id: ObjectId(announceId) })
+        .findOne({ _id:new  ObjectId(announceId) })
         .then((response) => {
           resolve(response);
         });
@@ -720,7 +720,7 @@ module.exports = {
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
-            $match: { student: ObjectId(studId) },
+            $match: { student:new  ObjectId(studId) },
           },
           {
             $unwind: "$attendance",
@@ -757,7 +757,7 @@ module.exports = {
       await db
         .get()
         .collection(collection.EVENT_COLLECTION)
-        .findOne({ _id: ObjectId(eventId) })
+        .findOne({ _id:new  ObjectId(eventId) })
         .then((response) => {
           resolve(response);
         });
@@ -768,13 +768,13 @@ module.exports = {
       let paidevent = await db
         .get()
         .collection(collection.EVENT_COLLECTION)
-        .findOne({ _id: ObjectId(eventId), Type: "Paid" });
+        .findOne({ _id:new  ObjectId(eventId), Type: "Paid" });
       if (paidevent) {
         if (
           await db
             .get()
             .collection(collection.EVENT_COLLECTION)
-            .findOne({ _id: ObjectId(eventId), students: ObjectId(studId) })
+            .findOne({ _id:new  ObjectId(eventId), students:new  ObjectId(studId) })
         ) {
           console.log("FOUND________________________");
         } else {
@@ -782,9 +782,9 @@ module.exports = {
             .get()
             .collection(collection.EVENT_COLLECTION)
             .updateOne(
-              { _id: ObjectId(eventId) },
+              { _id:new  ObjectId(eventId) },
               {
-                $push: { students: ObjectId(studId) },
+                $push: { students:new  ObjectId(studId) },
               }
             ).then;
         }
@@ -820,8 +820,8 @@ module.exports = {
       hmac = hmac.digest("hex");
       if (hmac == details["payment[razorpay_signature]"]) {
         let paidObj = {
-          student: ObjectId(studId),
-          event: ObjectId(details["order[receipt]"]),
+          student:new  ObjectId(studId),
+          event:new  ObjectId(details["order[receipt]"]),
         };
         db.get().collection(collection.PAID_COLLECTION).insertOne(paidObj);
         resolve();
@@ -833,8 +833,8 @@ module.exports = {
   paytmAdd: (studId, eventId) => {
     return new Promise((resolve, reject) => {
       let paidObj = {
-        student: ObjectId(studId),
-        event: ObjectId(eventId),
+        student:new  ObjectId(studId),
+        event:new  ObjectId(eventId),
       };
       db.get().collection(collection.PAID_COLLECTION).insertOne(paidObj);
       resolve();
@@ -935,8 +935,8 @@ module.exports = {
         .collection(collection.PVT_CHAT_COLLECTION)
         .insertOne({
           name: name,
-          studId: ObjectId(studId),
-          chatId: ObjectId(chatId),
+          studId:new  ObjectId(studId),
+          chatId:new  ObjectId(chatId),
           message: message,
         })
         .then((response) => {
@@ -965,12 +965,12 @@ module.exports = {
             $match: {
               $or: [
                 {
-                  studId: ObjectId(studId),
-                  chatId: ObjectId(chatId),
+                  studId:new  ObjectId(studId),
+                  chatId:new  ObjectId(chatId),
                 },
                 {
-                  studId: ObjectId(chatId),
-                  chatId: ObjectId(studId),
+                  studId:new  ObjectId(chatId),
+                  chatId:new  ObjectId(studId),
                 },
               ],
             },
@@ -994,7 +994,7 @@ module.exports = {
         .collection(collection.ATTENDANCE_COLLECTION)
         .aggregate([
           {
-            $match: { student: ObjectId(studId) },
+            $match: { student:new  ObjectId(studId) },
           },
           {
             $unwind: "$attendance",
@@ -1024,7 +1024,7 @@ module.exports = {
     return new Promise((resolve, reject) => {
       db.get()
         .collection(collection.STUDENT_COLLECTION)
-        .findOne({ _id: ObjectId(studId) })
+        .findOne({ _id:new  ObjectId(studId) })
         .then((response) => {
           resolve(response);
         });

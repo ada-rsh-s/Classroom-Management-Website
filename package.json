@@ -6,7 +6,7 @@
   },
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nodemon ./bin/www"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
@@ -25,6 +25,7 @@
     "nodemon": "^2.0.22",
     "objectid": "^2.3.0",
     "paypal-rest-sdk": "^1.8.1",
+    "paytmchecksum": "^1.5.1",
     "push.js": "^1.0.12",
     "razorpay": "^2.8.1",
     "socket.io": "^4.6.1"

@@ -48,7 +48,7 @@
 											srcset=""><strong>&nbsp;Announcements</strong></div>
 								</center>
 								{{#each announcement}}
-								<div class="col-sm-12 col-sm-offset-2 mt-20">
+							<a href="/announcement/{{this._id}}">	<div class="col-sm-12 col-sm-offset-2 mt-20">
 									<h1 class="sub-title-0 "><span style="font-size: 17px;"
 											class="gradient-text">{{this.Date}}</span></h1>
 								</div>
@@ -58,7 +58,7 @@
 									<div class="block-text">
 										<p>{{this.Description}}</p>
 									</div>
-								</div>
+								</div></a>
 								{{/each}}
 							</li>
 						</ul>

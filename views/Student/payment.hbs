@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Redirecting to Paytm...</title>
+</head>
+
+<body>
+    <h1>Redirecting to Paytm...</h1>
+    <form id="paytmForm" method="post" action="{{paytmUrl}}">
+        {{#each paytmParams}}
+        <input type="hidden" name="{{@key}}" value="{{this}}">
+        {{/each}}
+    </form>
+    <script>
+        document.getElementById("paytmForm").submit();
+    </script>
+</body>
+
+</html>

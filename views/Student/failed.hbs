@@ -1,11 +1,14 @@
-<head>
-  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
-  {{!-- <meta http-equiv="refresh" content="3";url="http://localhost:3000/student" /> --}}
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
+  <title>Payment Failed</title>
 </head>
 
 <body>
-
   <style>
     body {
       text-align: center;
@@ -14,7 +17,7 @@
     }
 
     h1 {
-      color: #88B04B;
+      color: #FF6B6B;
       font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
       font-weight: 900;
       font-size: 40px;
@@ -28,13 +31,6 @@
       margin: 0;
     }
 
-    i {
-      color: #9ABC66;
-      font-size: 100px;
-      line-height: 200px;
-      margin-left: -15px;
-    }
-
     .card {
       background: white;
       padding: 60px;
@@ -45,15 +41,22 @@
     }
   </style>
 
-  <body>
-    <div style="margin-top: 70px;" class="card">
-      <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:10px auto  -70px;">
-        <center><img style="margin-top: -10px; width: auto; height: 127px;" src="../eventdetails/cross.jpg" alt="">
-        </center>
-
-      </div>
-      <h1 style="color: red;">Payment Failed !!!</h1>
-      <p style="color: red;">Something went wrong !!</p> Redirecting you back to home page in 3 seconds....</p>
-
+  <div style="margin-top: 70px;" class="card">
+    <div style="border-radius: 200px; height: 200px; width: 200px; background: #F8FAF5; margin: 10px auto -70px;">
+      <center><img style="margin-top: -10px; width: auto; height: 127px;" src="../eventdetails/cross.jpg"
+          alt="Payment Failed"></center>
     </div>
-  </body>
+    <h1 style="color: red;">Payment Failed !!!</h1>
+    <p style="color: red;">Something went wrong !!</p>
+    <p>Redirecting you back to the home page in 3 seconds...</p>
+  </div>
+
+  <script>
+    setTimeout(function () {
+      window.location.href = "http://localhost:3000/student"; // Change to your home page URL
+    }, 3000);
+  </script>
+
+</body>
+
+</html>

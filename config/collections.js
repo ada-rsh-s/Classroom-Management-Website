@@ -1,4 +1,4 @@
-module.exports = {
+export default{
   TUTOR_COLLECTION: "tutor",
   STUDENT_COLLECTION: "student",
   NOTES_DOC_COLLECTION: "notesdoc",

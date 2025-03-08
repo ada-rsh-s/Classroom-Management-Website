@@ -1,36 +1,36 @@
 {
   "name": "library",
   "version": "0.0.0",
+  "type": "module",
   "engines": {
-    "node": "16.x"
+    "node": "20.x"
   },
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
-    "bcrypt": "^5.1.0",
-    "cookie-parser": "^1.4.6",
-    "debug": "~4.3.4",
-    "express": "^4.18.2",
-    "express-fileupload": "^1.4.0",
-    "express-handlebars": "^7.0.7",
-    "express-session": "^1.17.3",
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
+    "debug": "~4.4.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-fileupload": "^1.5.1",
+    "express-handlebars": "^8.0.1",
+    "express-session": "^1.18.1",
+    "got": "^14.4.6",
     "hbs": "^4.2.0",
     "http": "0.0.1-security",
     "http-errors": "~2.0.0",
-    "mongodb": "^5.3.0",
+    "mongodb": "^6.14.2",
     "morgan": "~1.10.0",
-    "node-sass": "^8.0.0",
-    "nodemon": "^2.0.22",
-    "objectid": "^2.3.0",
-    "paypal-rest-sdk": "^1.8.1",
-    "paytmchecksum": "^1.5.1",
+    "nodemon": "^3.1.9",
+    "objectid": "^3.2.1",
     "push.js": "^1.0.12",
-    "razorpay": "^2.8.1",
-    "socket.io": "^4.6.1"
+    "razorpay": "^2.9.6",
+    "socket.io": "^4.8.1"
   },
   "devDependencies": {
-    "handlebars": "^4.7.7"
+    "handlebars": "^4.7.8"
   }
 }

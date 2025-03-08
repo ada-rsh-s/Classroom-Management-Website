@@ -1,19 +1,27 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-const studentHelpers = require("./helpers/studentHelpers");
-const tutorHelpers = require("./helpers/tutorHelpers");
-var logger = require("morgan");
-var http = require("http");
-var usersRouter = require("./routes/user");
-var tutorRouter = require("./routes/tutor");
-var hbs = require("express-handlebars");
-var app = express("express-session");
+import createError from "http-errors";
+import express from "express";
+import path from "path";
+import cookieParser from "cookie-parser";
+import studentHelpers from "./helpers/studentHelpers.js";
+import tutorHelpers from "./helpers/tutorHelpers.js";
+import logger from "morgan";
+import http from "http";
+import usersRouter from "./routes/student.js";
+import tutorRouter from "./routes/tutor.js";
+import { Server } from "socket.io";
+import db from "./config/connection.js";
+import collection from "./config/collections.js";
+import fileUpload from "express-fileupload";
+import session from "express-session";
+import hbs from "express-handlebars";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const app = express(); 
 const server = http.createServer(app);
-var io = require("socket.io")(server);
-var db = require("./config/connection");
-const collection = require("./config/collections");
+const io = new Server(server);
 
 db.connect();
 
@@ -36,7 +44,7 @@ io.on("connection", (socket) => {
       ("0" + (new Date().getMonth() + 1)).slice(-2) +
       "-" +
       new Date().getFullYear();
-    var objtopi = {
+    const objtopi = {
       topic: topic,
       type: type,
       Date: date,
@@ -75,8 +83,6 @@ io.on("connection", (socket) => {
   });
 });
 
-var fileUpload = require("express-fileupload");
-var session = require("express-session");
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
@@ -89,13 +95,18 @@ app.engine(
     partialsDir: __dirname + "/views/Partials/",
   })
 );
-app.use(logger("dev"));
+// app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(fileUpload());
-app.use(session({ secret: "Key", cookie: { maxAge: 3600000 } }));
+app.use(session({
+  secret: "Key",
+  resave: false,  
+  saveUninitialized:false,
+  cookie: { maxAge: 3600000 }
+}));
 app.set("socketio", io);
 
 app.use("/", usersRouter);
@@ -115,4 +126,4 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-module.exports = { app: app, server: server };
+export {app, server}; 

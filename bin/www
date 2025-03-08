@@ -1,16 +1,15 @@
 #!/usr/bin/env node 
-
 // Module dependencies 
-var app = require('../index').app; 
-var debug = require('debug')('socketiotest:server'); 
-var http = require('http'); 
+import { app, server } from '../index.js';
+import debug from 'debug';
+import http from 'http';
 
 // Get port from environment and store in Express 
-var port = normalizePort(process.env.PORT || '3000'); 
+const port = normalizePort(process.env.PORT || '3000'); 
 app.set('port', port); 
 
 // Create HTTP server 
-var server = require("../index").server; 
+debug('socketiotest:server');
 
 // Listen on provided port, on all 
 // network interfaces. 

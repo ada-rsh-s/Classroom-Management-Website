@@ -1,11 +1,14 @@
-<head>
-  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
-  <meta http-equiv="refresh" content="3";url="http://localhost:3000/student" />
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
+  <title>Payment Success</title>
 </head>
 
 <body>
-
   <style>
     body {
       text-align: center;
@@ -18,7 +21,7 @@
       font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
       font-weight: 900;
       font-size: 40px;
-      margin-bottom: 10px;
+      margin-bottom: 10px; 
     }
 
     p {
@@ -45,16 +48,20 @@
     }
   </style>
 
-  <body>
-    <div style="margin-top: 70px;" class="card">
-      <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto  -70px;">
-        <center><img src="../eventdetails/download1.jpg" alt=""></center>
-
-      </div>
-      <h1>Payment Success</h1>
-      <p>HEARTLY WELCOME TO THE EVENT !<br><br>
-      <p style="color: red;">WARNING : Don't do any other operations . Redirecting you back to home page in 3 seconds !!
-      </p>
-      </p>
+  <div style="margin-top: 70px;" class="card">
+    <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto -70px;">
+      <center><img src="../eventdetails/download1.jpg" alt=""></center>
     </div>
-  </body>
+    <h1>Payment Success</h1>
+    <p>HEARTLY WELCOME TO THE EVENT !<br><br></p>
+    <p style="color: red;">WARNING: Don't do any other operations. Redirecting you back to the home page in 3 seconds!
+    </p>
+  </div>
+</body>
+<script>
+  setTimeout(function() {
+    window.location.href = "http://localhost:3000/student";
+  }, 3000);
+</script>
+
+</html>

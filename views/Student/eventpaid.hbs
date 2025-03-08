@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/eventdetails/style.css">
     <link rel="stylesheet" href="/eventdetails/responsive.css">
     <link href="/Image enlarge/magicthumb-trial/magicthumb/magicthumb.css" rel="stylesheet" type="text/css" />
+    
 
 
 </head>
@@ -71,17 +72,7 @@
                                                 style=" margin-top: -90px; margin-bottom: -60px;"
                                                 src="../eventdetails/razorpay.png" alt="" srcset=""></button>
                                     </form>
-                                    <form action="/paytm" method="POST">
-                                        <input type="text" name="studId" hidden value="{{stud._id}}">
-                                        <input type="text" name="eventId" hidden value="{{event._id}}">
-                                        <input type="number" name="amount" hidden value="{{event.Amount}}">
-                                        <button style="background-color: #ffc600; color: #07294d; margin-bottom: 10px;"
-                                            type="submit" class="main-btn">Book Your Seat through <br><img
-                                                style=" margin-top: -90px; margin-bottom: -60px; height: 40px; width: auto;"
-                                                src="../eventdetails/ezgif-3-55a0994a3e7b.jpg" alt=""
-                                                srcset=""></button>
-
-                                    </form>
+                                  
                                     <form action="/paypal" method="POST">
                                         <input type="text" name="studId" hidden value="{{stud._id}}">
                                         <input type="text" name="eventId" hidden value="{{event._id}}">
@@ -133,7 +124,6 @@
 <script>
     $("#eventbook").submit((e) => {
         e.preventDefault()
-        console.log($('#eventbook').serialize())
         $.ajax({
             url: '/payevent',
             method: 'post',
@@ -145,17 +135,14 @@
     })
     function razorpayPayment(order) {
         var options = {
-            "key": "rzp_test_BTghMaFUWF72Za", // Enter the Key ID generated from the Dashboard
-            "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            "key": "rzp_test_BTghMaFUWF72Za",
+            "amount": order.amount,
             "currency": "INR",
             "name": "Adarsh S",
             "description": order.id,
             "image": "https://avatars.githubusercontent.com/u/64910179?v=4",
-            "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "order_id": order.id,
             "handler": function (response) {
-                //alert(response.razorpay_payment_id);
-                // alert(response.razorpay_order_id);
-                // alert(response.razorpay_signature)
                 verifyPayment(response, order)
             },
             "notes": {
@@ -169,7 +156,6 @@
         rzp1.open();
     }
     function verifyPayment(payment, order) {
-        console.log(payment,order)
         $.ajax({
             url: '/verify-payment',
             data: {
@@ -178,7 +164,6 @@
             },
             method: 'post',
             success: (response) => {
-                console.log(response)
                 if (response.status) {
                     location.href = '/success'
                 } else {
@@ -187,5 +172,7 @@
             }
         })
     }
+    
+
 </script>
 <script type="text/javascript" src="/Image enlarge/magicthumb-trial/magicthumb/magicthumb.js"></script>

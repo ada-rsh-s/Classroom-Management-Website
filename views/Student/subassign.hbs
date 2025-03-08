@@ -66,9 +66,9 @@
 																</div>
 
 															</div>
-															<a href="/assignments/{{assignId}}"></a> <button
+															 <button
 																style="float: right;" type="submit"
-																onclick="uploadFile();showDiv();"
+																onclick="uploadFile({{assignId}});showDiv();"
 																class="btn btn-success">
 																Save changes
 															</button>
@@ -98,6 +98,7 @@
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script>
 		function fileValidation() {
+			console.log("fileValidation");
 			var fileInput =
 				document.getElementById('file1');
 
@@ -125,7 +126,7 @@
 			return document.getElementById(el);
 		}
 
-		function uploadFile() {
+		function uploadFile(assignId) {
 			var file = _("file1").files[0];
 			// alert(file.name+" | "+file.size+" | "+file.type);
 			var formdata = new FormData();
@@ -135,8 +136,7 @@
 			ajax.addEventListener("load", completeHandler, false);
 			ajax.addEventListener("error", errorHandler, false);
 			ajax.addEventListener("abort", abortHandler, false);
-			ajax.open("POST", "file_upload_parser.php"); // http://www.developphp.com/video/JavaScript/File-Upload-Progress-Bar-Meter-Tutorial-Ajax-PHP
-			//use file_upload_parser.php from above url
+			ajax.open("POST", "/assignments/" + assignId);
 			ajax.send(formdata);
 		}
 
@@ -149,7 +149,7 @@
 
 		function completeHandler(event) {
 			_("status").innerHTML = event.target.responseText;
-			_("progressBar").value = 0; //wil clear progress bar after successful upload
+			_("progressBar").value = 0;
 		}
 
 		function errorHandler(event) {

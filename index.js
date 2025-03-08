@@ -14,6 +14,8 @@ import collection from "./config/collections.js";
 import fileUpload from "express-fileupload";
 import session from "express-session";
 import hbs from "express-handlebars";
+import Handlebars from "handlebars";
+import { allowInsecurePrototypeAccess } from "@handlebars/allow-prototype-access";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -28,7 +30,7 @@ db.connect();
 io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     console.log("Connection Closed");
-  });
+  }); 
 
   socket.on("pvtchat", async (data) => {
     await studentHelpers.findPvtChat(data.userId).then((details) => {
@@ -93,6 +95,7 @@ app.engine(
     defaultLayout: "layout",
     layoutsDir: __dirname + "/views/Layout/",
     partialsDir: __dirname + "/views/Partials/",
+    handlebars: allowInsecurePrototypeAccess(Handlebars), // Enable prototype access
   })
 );
 // app.use(logger("dev"));

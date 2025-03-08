@@ -10,6 +10,7 @@
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.5",
     "bcryptjs": "^3.0.2",
     "cookie-parser": "^1.4.7",
     "debug": "~4.4.0",

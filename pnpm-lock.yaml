@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@handlebars/allow-prototype-access':
+        specifier: ^1.0.5
+        version: 1.0.5(handlebars@4.7.8)
       bcryptjs:
         specifier: ^3.0.2
         version: 3.0.2
@@ -71,6 +74,11 @@ importers:
         version: 4.7.8
 
 packages:
+
+  '@handlebars/allow-prototype-access@1.0.5':
+    resolution: {integrity: sha512-D5AJO9dM6B+1scVVQ4ma05cAku5M2dEnlycggIg6RW539TdQlgbNg1G1r86fNqqNI0CHv/TVwKEB9M6ILJQCWQ==}
+    peerDependencies:
+      handlebars: ^4.7.2
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -988,6 +996,10 @@ packages:
         optional: true
 
 snapshots:
+
+  '@handlebars/allow-prototype-access@1.0.5(handlebars@4.7.8)':
+    dependencies:
+      handlebars: 4.7.8
 
   '@isaacs/cliui@8.0.2':
     dependencies:

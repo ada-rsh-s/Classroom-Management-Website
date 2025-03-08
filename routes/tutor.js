@@ -136,7 +136,9 @@ tutorRouter.post("/editutor/:id", tutorLogin, (req, res) => {
   let id = req.params.id;
   tutorHelpers.updateTutDetails(req.params.id, req.body).then(() => {
     res.redirect("/tutor/profile");
-    if (req.files.Tutimage) {
+    console.log(req.files);
+    
+    if (req.files!==null) {
       let image = req.files.Tutimage;
       image.mv("./public/Tutor-image/" + id + ".jpg");
     }
@@ -442,7 +444,7 @@ tutorRouter.get("/photos", tutorLogin, (req, res) => {
   });
 });
 
-
+ 
 let rollstatus = false;
 tutorRouter.get("/addstudent", tutorLogin, (req, res) => {
   res.render("Tutor/add-student", { tutor: true, rollstatus });
